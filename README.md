@@ -1,4 +1,4 @@
 PIS
 ===
 
-Projekt do PIS
+Projekt do PIS.
