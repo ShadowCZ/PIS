@@ -2,7 +2,7 @@
 
 /*
  *---------------------------------------------------------------
- * APPLICATION ENVIRONMENT   kk
+ * APPLICATION ENVIRONMENT
  *---------------------------------------------------------------
  *
  * You can load different configurations depending on your
