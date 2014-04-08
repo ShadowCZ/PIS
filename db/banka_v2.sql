@@ -108,6 +108,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `login` varchar(20) COLLATE utf8_czech_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_czech_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
+  `last_ip` varchar(50) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id_employee`),
   UNIQUE KEY `login` (`login`),
   KEY `id_role` (`id_role`)
