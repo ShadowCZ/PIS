@@ -5,7 +5,6 @@
  * @author Radim Res
  * @package banka
  * @version 0.1.1.0
- * test comitu 
  */
 
 class CMain extends MY_Controller{
