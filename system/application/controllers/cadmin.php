@@ -45,12 +45,35 @@ class CAdmin extends MY_Controller{
             $this->memployee->login = $this->input->post('login');
         }
         if ($this->input->post('name')) {
-            $this->memployee->login = $this->input->post('name');
+            $this->memployee->name = $this->input->post('name');
         }
         if ($this->input->post('surname')) {
-            $this->memployee->login = $this->input->post('surname');
+            $this->memployee->surname = $this->input->post('surname');
+        }  
+        if ($this->input->post('id_role')) {
+            $this->memployee->role = $this->input->post('id_role');
         }
-        // TODO: další položky
+        if ($this->input->post('address1')) {
+            $this->memployee->address1 = $this->input->post('address1');
+        }
+        if ($this->input->post('address2')) {
+            $this->memployee->address2 = $this->input->post('address2');
+        }
+        if ($this->input->post('postal_code')) {
+            $this->memployee->postalCode = $this->input->post('postal_code');
+        }
+        if ($this->input->post('telephone')) {
+            $this->memployee->tel = $this->input->post('telephone');
+        }                
+        if ($this->input->post('password')) {
+            $this->memployee->pass = $this->input->post('password');
+        }         
+        if ($this->input->post('email')) {
+            $this->memployee->email = $this->input->post('email');
+        }
+        if ($this->input->post('active')) {
+            $this->memployee->active = $this->input->post('active');
+        }
         
         $this->memployee->update();
         redirect('cadmin/showEmployeeList/', 'location');
@@ -59,7 +82,8 @@ class CAdmin extends MY_Controller{
     
 	// zobrazí formulář pro přihlášení
     public function removeEmployee($iEmployee) {
-        $this->memployee->remove($iEmployee);
+        $this->memployee->ID = $iEmployee;
+        $this->memployee->delete();
         redirect('cadmin/showEmployeeList/', 'location');
     }
 }
