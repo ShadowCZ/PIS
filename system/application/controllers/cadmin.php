@@ -82,8 +82,7 @@ class CAdmin extends MY_Controller{
     
 	// zobrazí formulář pro přihlášení
     public function removeEmployee($iEmployee) {
-        $this->memployee->ID = $iEmployee;
-        $this->memployee->delete();
+        $this->memployee->delete($iEmployee);
         redirect('cadmin/showEmployeeList/', 'location');
     }
 }
