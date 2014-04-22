@@ -1,0 +1,1 @@
+Sviť měsíčku sviť, opaluj mou řit..
