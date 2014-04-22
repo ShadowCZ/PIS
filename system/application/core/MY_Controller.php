@@ -36,6 +36,7 @@ class MY_Controller extends CI_Controller {
         $this->s->assign('bLogout', false);
 
         $this->load->database();
+        $this->load->model(array('memployee'));
         
         $this->load->helper( array( 'show_message' ) );
         if ($this->session->flashdata( 'severity' ) ) {
@@ -45,7 +46,8 @@ class MY_Controller extends CI_Controller {
         if ( $this->input->cookie('ci_profiler_on') ) {
             $this->output->enable_profiler( TRUE );
         }
-
+        $this->s->assign( 'sActiveUserName', $this->session->userdata('user_name') );
+        
         $this->s->assign( 'aMainMenu', $this->getMenu( 'main' ) );
         $this->s->assign( 'aAdminMenu', $this->getMenu( 'admin' ) );
         

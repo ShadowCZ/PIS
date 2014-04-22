@@ -46,6 +46,7 @@ class CMain extends MY_Controller{
             $aSession = array(
                 'login' => 1,
                 'user_id' => $this->memployee->ID,
+                'user_name' => $this->memployee->name . " " . $this->memployee->surname,
 // Dočasná ukázka jak pracujeme s ORM
 //                'player_id' => $this->muser->player->ID,
 //                'ally_id' => $this->muser->player->ally->ID,
@@ -62,7 +63,11 @@ class CMain extends MY_Controller{
     
 	// odhlášení ze systému
     public function logout() {
-        $this->session->set_userdata(array ('login' => 0));
+        $this->session->set_userdata(array (
+            'login' => 0,
+            'user_name' => "",
+        ));
+        
         // TODO: hláška odhlášení
         $this->showLogin();
     }
