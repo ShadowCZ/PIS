@@ -64,4 +64,30 @@ class MAccount extends MY_Model
     public function  __toString() {
         return $this->ID;
     }
+    
+    /**
+     * Returns array of accounts for client
+     * @param int $iClient
+     * @access public
+     * @return int
+     */
+    public function getClientAccounts($iClient) {
+        $map = $this->getMap();
+
+        $sql = "SELECT *
+               FROM account
+               WHERE id_client = " . $iClient;
+
+        $resources = $this->db->query( $sql );
+
+        $aAccounts = array();
+        foreach ($resources->result() as $row) {
+            $oAccount = new MAccount();
+            foreach ($row as $key => $att) {
+                $oAccount->$map[$key] = $att;
+            }
+            $aAccounts[] = $oAccount;
+        }
+        return $aAccounts;
+    }
 }
