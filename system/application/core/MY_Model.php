@@ -908,8 +908,11 @@ class MY_Model extends CI_Model
     /**
      * Deletes current record from database
      */
-    public function delete()
+    public function delete($iRow = 0)
     {
+        if ($iRow > 0) {
+            $this->{$this->_primary_key} = $iRow;
+        }
         $this->db->where($this->_cols[$this->_primary_key]['column_name'], $this->{$this->_primary_key});
         $this->db->delete($this->_base_table);
     }

@@ -1,13 +1,13 @@
 <?php  if ( ! defined('BASEPATH')) {exit('No direct script access allowed');}
 
 /**
- * Model for table role
+ * Model for table account_type
  * 
  * @author    Radim Res
  * @package   banka
  * @version   0.1.1.0
  */
-class MRole extends MY_Model
+class MAccountType extends MY_Model
 {
 
     /**
@@ -18,12 +18,12 @@ class MRole extends MY_Model
      */
     protected $_cols = array(
         'ID' => array(
-            'column_name' => 'id_role',
+            'column_name' => 'id_account_type',
         ),
         'name' => array(
             'column_name' => 'name',
         ),
-        'desc' => array(
+        'description' => array(
             'column_name' => 'description',
         ),
     );
@@ -34,7 +34,7 @@ class MRole extends MY_Model
      * @access protected
      * @var    string
      */
-    protected $_base_table = 'role';
+    protected $_base_table = 'account_type';
 
     /**
      * Returns ID of row

@@ -72,7 +72,7 @@ class MEmployee extends MY_Model
     protected $_base_table = 'employee';
 
     /**
-     * Returns ID of employee
+     * Returns ID of row
      *
      * @access public
      * @return int
