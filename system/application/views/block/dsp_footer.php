@@ -1,4 +1,5 @@
-
+    </div>
+</div>
 <push></push>
 <footer class="row">
     <div class="well text-right col-md-12">
