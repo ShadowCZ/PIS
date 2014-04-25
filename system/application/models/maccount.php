@@ -71,12 +71,24 @@ class MAccount extends MY_Model
      * @access public
      * @return int
      */
-    public function getClientAccounts($iClient) {
+    public function getClientAccounts($iClient = 0, $sAccountFilter = null) {
+
         $map = $this->getMap();
 
+        $sCond = "";
+        if ($iClient > 0) {
+            $sCond = "id_client = " . $iClient;
+        }
+        
+        if (isset($sAccountFilter)) {
+            if ($iClient > 0) {
+                $sCond .= " AND ";
+            }
+            $sCond .= "account_number LIKE " . $sAccountFilter;
+        }
         $sql = "SELECT *
                FROM account
-               WHERE id_client = " . $iClient;
+               WHERE " . $sCond;
 
         $resources = $this->db->query( $sql );
 
