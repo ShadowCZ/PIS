@@ -69,6 +69,6 @@ class CMain extends MY_Controller{
         ));
         
         // TODO: hláška odhlášení
-        $this->showLogin();
+        redirect('cmain/', 'location');
     }
 }

@@ -51,7 +51,7 @@
                             </h3>
                         </li>
                     </ul>
-                    {if {$sActiveUserName}}
+                    {if $sActiveUserName}
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <h3> {$sActiveUserName} </h3>
