@@ -14,8 +14,12 @@
               window.location = "{site_url('cmain/')}";
         {/if}
         jQuery(document).ready(function($) {
-              $(".clickableRow").click(function() {
-                    window.document.location = $(this).attr("href");
+              $(".clickableRow").click(function(event) {
+                    window.e = event;
+
+                    if (event.target.className.indexOf("dont-select") == -1 && !$(event.target).parents(".dont-select").length) {
+                        window.document.location = $(this).attr("href");
+                    }
               });
         });
     </script>

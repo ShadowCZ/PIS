@@ -10,13 +10,22 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <form class="form-inline" role="form">
-                      <div class="form-group">
-                        <label class="sr-only" for="searchText">Email address</label>
-                        <input type="text" class="form-control" id="searchText" placeholder="Text">
-                      </div>
-                      <button type="submit" class="btn btn-default">Hledat</button>
-                </form>
+                <div class="row">
+                    <form class="form-inline col-md-6" role="form">
+                          <div class="form-group">
+                            <label class="sr-only" for="searchText">Email address</label>
+                            <input type="text" class="form-control" id="searchText" name="searchText" placeholder="Text">
+                          </div>
+                          <button type="submit" class="btn btn-default">Hledat</button>
+
+                    </form>
+                    <div class=" col-md-6">
+                        <a href="{site_url('cadmin/showEmployee')}/">
+                            <button  class="btn btn-success col-md-offset-5">Přidat záznam</button>
+                        </a>
+                    </div>
+                </div>
+
 
                 <table class="table table-hover table-bordered">
                     <thead>
@@ -61,7 +70,7 @@
                                     {$oEmployee->surname}
                                 </td>
                                 <td>
-                                    {$oEmployee->role->name}
+                                    {if $oEmployee->role}{$oEmployee->role->name}{/if}
                                 </td>
                                 <td>
                                     {$oEmployee->tel}
@@ -74,6 +83,13 @@
                                 </td>
                                 <td>
                                     {$oEmployee->lastIp}
+                                </td>
+                                <td class="dont-select">
+                                    <a href="{site_url('cadmin/removeEmployee')}/{$oEmployee->ID}">
+                                        <button type="button" class="btn btn-danger btn-md">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                         {/foreach}
