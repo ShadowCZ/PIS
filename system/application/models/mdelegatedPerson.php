@@ -58,4 +58,32 @@ class MDelegatedPerson extends MY_Model
     public function  __toString() {
         return $this->ID;
     }
+    
+    
+    /**
+     * Returns array of delegatedPersons for account
+     * @param int $iAccount
+     * @access public
+     * @return array
+     */
+    public function getByAccount($iAccount) {
+
+        $map = $this->getMap();
+
+        $sql = "SELECT *
+               FROM delegated_person
+               WHERE id_account=" . $iAccount;
+
+        $resources = $this->db->query( $sql );
+
+        $aDelegatedPersons = array();
+        foreach ($resources->result() as $row) {
+            $oDelegatedPerson = new MDelegatedPerson();
+            foreach ($row as $key => $att) {
+                $oDelegatedPerson->$map[$key] = $att;
+            }
+            $aDelegatedPersons[] = $oDelegatedPerson;
+        }
+        return $aDelegatedPersons;
+    }
 }

@@ -68,8 +68,9 @@ class MAccount extends MY_Model
     /**
      * Returns array of accounts for client
      * @param int $iClient
+     * @param string $sAccountFilter
      * @access public
-     * @return int
+     * @return array
      */
     public function getClientAccounts($iClient = 0, $sAccountFilter = null) {
 
