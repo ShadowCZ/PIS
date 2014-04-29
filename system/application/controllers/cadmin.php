@@ -43,44 +43,45 @@ class CAdmin extends MY_Controller{
 	// akce pro editaci a vytvoření nového zaměstnance
     public function updateEmployee($iEmployee = 0) {
         if ($iEmployee > 0) {
-            $oEmployee = $this->memployee->getById($iEmployee);
+            $this->memployee = $this->memployee->getById($iEmployee);
         }
         //var_dump($oEmployee);
         if ($this->input->post('login')) {
-            $oEmployee->login = $this->input->post('login');
+            $this->memployee->login = $this->input->post('login');
         }
         if ($this->input->post('name')) {
-            $oEmployee->name = $this->input->post('name');
+            $this->memployee->name = $this->input->post('name');
         }
         if ($this->input->post('surname')) {
-            $oEmployee->surname = $this->input->post('surname');
+            $this->memployee->surname = $this->input->post('surname');
         }  
-        if ($this->input->post('id_role')) {
-            $oEmployee->role = $this->input->post('id_role');
+        if ($this->input->post('role')) {
+            $this->memployee->role = $this->input->post('role');
         }
         if ($this->input->post('address1')) {
-            $oEmployee->address1 = $this->input->post('address1');
+            $this->memployee->address1 = $this->input->post('address1');
         }
         if ($this->input->post('address2')) {
-            $oEmployee->address2 = $this->input->post('address2');
+            $this->memployee->address2 = $this->input->post('address2');
         }
         if ($this->input->post('postalCode')) {
-            $oEmployee->postalCode = $this->input->post('postalCode');
+            $this->memployee->postalCode = $this->input->post('postalCode');
         }
         if ($this->input->post('tel')) {
-            $oEmployee->tel = $this->input->post('tel');
+            $this->memployee->tel = $this->input->post('tel');
         }                
         if ($this->input->post('password')) {
-            $oEmployee->pass = $this->input->post('password');
+            $this->memployee->pass = $this->input->post('password');
         }         
         if ($this->input->post('email')) {
-            $oEmployee->email = $this->input->post('email');
+            $this->memployee->email = $this->input->post('email');
         }
-        if ($this->input->post('active')) {
-            $oEmployee->active = $this->input->post('active');
+        if ($this->input->post('active') !== false) {
+            $this->memployee->active = $this->input->post('active');
         }
 
-        $oEmployee->update();
+        //$this->memployee->update();
+        $this->memployee->update();
         redirect('cadmin/showEmployeeList/', 'location');
     }
 
