@@ -11,7 +11,7 @@ class CAdmin extends MY_Controller{
 
     public function __construct($_internal_call = false) {
         parent::__construct($_internal_call);
-        $this->load->model(array('memployee'));
+        $this->load->model(array('memployee', 'mrole'));
     }
 
     public function index() {
@@ -32,6 +32,10 @@ class CAdmin extends MY_Controller{
         } else {
             $oEmployee = null;
         }
+        
+        $aRole = $this->mrole->getAll();
+
+        $this->s->assign('aRole', $aRole);
         $this->s->assign('oEmployee', $oEmployee);
         $this->s->displayWithHeader('dsp_employee.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
@@ -59,8 +63,8 @@ class CAdmin extends MY_Controller{
         if ($this->input->post('address2')) {
             $this->memployee->address2 = $this->input->post('address2');
         }
-        if ($this->input->post('postal_code')) {
-            $this->memployee->postalCode = $this->input->post('postal_code');
+        if ($this->input->post('postalCode')) {
+            $this->memployee->postalCode = $this->input->post('postalCode');
         }
         if ($this->input->post('telephone')) {
             $this->memployee->tel = $this->input->post('telephone');

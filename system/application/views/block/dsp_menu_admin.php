@@ -3,6 +3,10 @@
         <a href="{site_url('cadmin/showEmployeeList')}">Zaměstnanci</a>
     </li>
     <li>
+        {anchor uri="cadmin/showEmployee/" label="Přidat zaměstnance"}
+    </li>
+    {*
+    <li>
         <a href="#">X Účty</a>
     </li>
     <li>
@@ -17,5 +21,6 @@
     <li>
         <a href="#">X Messages</a>
     </li>
+    *}
     
 </ul>
