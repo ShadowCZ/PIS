@@ -37,7 +37,7 @@
                                 Telefon
                             </th>
                             <th>
-                                email
+                                Email
                             </th>
                             <th>
                                 Aktivní
@@ -61,7 +61,7 @@
                                     {$oEmployee->surname}
                                 </td>
                                 <td>
-                                    {$oEmployee->role}
+                                    {$oEmployee->role->name}
                                 </td>
                                 <td>
                                     {$oEmployee->tel}
@@ -70,7 +70,7 @@
                                     {$oEmployee->email}
                                 </td>
                                 <td>
-                                    {$oEmployee->active}
+                                    {if $oEmployee->active}Ano{else}Ne{/if}
                                 </td>
                                 <td>
                                     {$oEmployee->lastIp}
@@ -79,6 +79,7 @@
                         {/foreach}
                     </tbody>
                 </table>
+                {* Přidáme až při rozšiřování
                 <div class="row clearfix">
                     <div class="col-md-offset-8 col-md-4 column ">
                         <ul class="pagination pagination-sm">
@@ -106,6 +107,7 @@
                         </ul>
                     </div>
                 </div>
+                *}
             </div>
 <!--                         <div class="panel-footer">
                 Panel footer
