@@ -30,7 +30,7 @@ class CAdmin extends MY_Controller{
         if ($iEmployee > 0) {
             $oEmployee = $this->memployee->getById($iEmployee);
         } else {
-            $oEmployee = null;
+            $oEmployee = $this->memployee;
         }
         
         $aRole = $this->mrole->getAll();
