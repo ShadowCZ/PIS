@@ -87,4 +87,32 @@ class MOperation extends MY_Model
     public function  __toString() {
         return $this->ID;
     }
+
+    /**
+     * Returns array of operations for account
+     * @param int $iAccount
+     * @access public
+     * @return array
+     */
+    public function getByAccount($iAccount) {
+
+        $map = $this->getMap();
+
+        $sql = "SELECT o.*
+               FROM operation o
+               JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person
+               WHERE id_account=" . $iAccount;
+               
+        $resources = $this->db->query( $sql );
+
+        $aOperations = array();
+        foreach ($resources->result() as $row) {
+            $oOperation = new MOperation();
+            foreach ($row as $key => $att) {
+                $oOperation->$map[$key] = $att;
+            }
+            $aOperations[] = $oOperation;
+        }
+        return $aOperations;
+    }
 }

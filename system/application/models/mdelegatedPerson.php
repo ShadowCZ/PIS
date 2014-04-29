@@ -86,4 +86,31 @@ class MDelegatedPerson extends MY_Model
         }
         return $aDelegatedPersons;
     }
+    
+    /**
+     * Returns delegatedPerson for combination account and client
+     * @param int $iAccount
+     * @param int $iClient
+     * @access public
+     * @return bool
+     */
+    public function getByAccountAndClient($iAccount, $iClient) {
+
+        $map = $this->getMap();
+
+        $sql = "SELECT *
+               FROM delegated_person
+               WHERE id_account=" . $iAccount . " id_Client=" . $iClient;
+
+        $resources = $this->db->query( $sql );
+
+        if (($row = current($resources->result())) == false) return false;
+		
+		$map = $this->getMap();
+        foreach ($row as $key => $att) {
+            $this->$map[$key] = $att;
+        }
+        
+        return true;
+    }
 }
