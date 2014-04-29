@@ -9,10 +9,9 @@
                     Detail zaměstnance
                 </h3>
             </div>
-            {$oEmployee->name}
             <div class="panel-body">
                 <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                <form class="form-horizontal" role="form" action="{site_url('cadmin/updateEmployee')}" method="post">
+                <form class="form-horizontal" role="form" action="{site_url('cadmin/updateEmployee/')}{if $oEmployee->ID}/{$oEmployee->ID}{/if}" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <input type="hidden" class="form-control" name="ID" value="{if $oEmployee->ID}{$oEmployee->ID}{/if}">
@@ -92,15 +91,15 @@
                             <div class="form-group">
                                 <label required title="Toto pole je potřeba vyplnit." for="input11" class="col-sm-2 control-label">Heslo</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="input11" name="password" placeholder="Heslo">
+                                    <input type="password" class="form-control" id="input11" name="password" placeholder="Heslo" value="{if $oEmployee->pass}{$oEmployee->pass}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label required title="Toto pole je potřeba vyplnit." for="input10" class="col-sm-2 control-label">Aktivní</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" id="input10" name="active">
-                                        <option value="0"  {if $oEmployee->ID && $oEmployee->active eq 0} selected="selected"{/if} >Neaktivní</option>
-                                        <option value="1"  {if ($oEmployee->ID && $oEmployee->active eq 1) || !($oEmployee->ID && $oEmployee->active eq 0)} selected="selected"{/if} >Aktivní</option>
+                                        <option value="0" {if $oEmployee->ID && $oEmployee->active eq 0} selected="selected"{/if} >Neaktivní</option>
+                                        <option value="1" {if ($oEmployee->ID && $oEmployee->active eq 1) || !($oEmployee->ID && $oEmployee->active eq 0)} selected="selected"{/if} >Aktivní</option>
                                     </select>
                                 </div>
                             </div>

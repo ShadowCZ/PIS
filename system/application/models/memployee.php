@@ -70,7 +70,7 @@ class MEmployee extends MY_Model
      * @var    string
      */
     protected $_base_table = 'employee';
-
+    
     /**
      * Returns ID of row
      *
