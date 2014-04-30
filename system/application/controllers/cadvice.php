@@ -38,7 +38,7 @@ class CAdvice extends MY_Controller{
     }
     
         // zobrazí formulář pro editaci klienta
-    public function showAccountsList($iClient = 0, $sAccountFilter = "") {
+    public function showAccountList($iClient = 0, $sAccountFilter = "") {
         if ($iClient > 0) {
             $oAccounts = $this->maccount->getClientAccounts($iClient);
         }
