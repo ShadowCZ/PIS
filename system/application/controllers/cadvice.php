@@ -39,9 +39,12 @@ class CAdvice extends MY_Controller{
     
         // zobrazí formulář pro editaci klienta
     public function showAccountList($iClient = 0, $sAccountFilter = "") {
-        if ($iClient > 0) {
-            $oAccounts = $this->maccount->getClientAccounts($iClient);
-        }
+        $aAccounts = $this->maccount->getAll();
+        $this->s->assign('aAccounts', $aAccounts);
+        $this->s->displayWithHeader('dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+        // if ($iClient > 0) {
+        //     $oAccounts = $this->maccount->getClientAccounts($iClient);
+        // }
 
         /*
         $oClient = $this->mclient->getById($iClient);
@@ -49,6 +52,12 @@ class CAdvice extends MY_Controller{
         $this->s->displayWithHeader('dsp_client', $this->aJavascriptFiles, $this->aCssFiles );
     */
       }      
+        // zobrazí formulář pro editaci uctu
+    public function showAccount($iClient=0) {
+        $oAccount = $this->maccount->getById($iClient);
+        $this->s->assign('oAccount', $oAccount);
+        $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
+    }   
          
     
         // zobrazí formulář pro editaci klienta

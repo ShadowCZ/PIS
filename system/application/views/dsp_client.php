@@ -11,7 +11,7 @@
             </div>
             <div class="panel-body">
                 <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                <form class="form-horizontal" role="form" action="{site_url('cadmin/updateClient/')}{if $oClient->ID}/{$oClient->ID}{/if}" method="post">
+                <form class="form-horizontal" role="form" action="{site_url('cadvice/updateClient/')}{if $oClient->ID}/{$oClient->ID}{/if}" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <input type="hidden" class="form-control" name="ID" value="{if $oClient->ID}{$oClient->ID}{/if}">
