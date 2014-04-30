@@ -58,7 +58,12 @@ class CAdvice extends MY_Controller{
     
         // zobrazí formulář pro editaci klienta
     public function showClient($iClient=0) {
-        $oClient = $this->mclient->getById($iClient);
+        if ($iClient > 0) {
+            $oClient = $this->mclient->getById($iClient);
+        } else {
+            $oClient = $this->mclient;
+        }
+        
         $this->s->assign('oClient', $oClient);
         $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
     }    
