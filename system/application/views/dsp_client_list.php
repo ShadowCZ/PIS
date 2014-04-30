@@ -50,24 +50,24 @@
                     <tbody>
                         {foreach $aClients as $oClient}
                             <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                            <tr  class='clickableRow' href="{site_url('cadvice/showClientEdit')}/{$aClients->ID}">cadvice/showAccountList/$iClient
+                            <tr  class='clickableRow' href="{site_url('cadvice/showClientEdit')}/{$oClient->ID}">
                                 <td>
-                                    {$aClients->ID}
+                                    {$oClient->ID}
                                 </td>
                                 <td>
-                                    {$aClients->name}
+                                    {$oClient->name}
                                 </td>
                                 <td>
-                                    {$aClients->surname}
+                                    {$oClient->surname}
                                 </td>
                                 <td>
-                                    {$aClients->tel}
+                                    {$oClient->tel}
                                 </td>
                                 <td>
-                                    {$aClients->email}
+                                    {$oClient->email}
                                 </td>
                                 <td class="dont-select">
-                                    <a href="{site_url('cadmin/removeClient')}/{$aClients->ID}">
+                                    <a href="{site_url('cadmin/removeClient')}/{$oClient->ID}">
                                         <button type="button" class="btn btn-danger btn-md">
                                             <span class="glyphicon glyphicon-remove"></span>
                                         </button>
