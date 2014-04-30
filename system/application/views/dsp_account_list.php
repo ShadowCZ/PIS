@@ -46,19 +46,19 @@
                                 Číslo účtu
                             </th>
                             <th>
+                                Typ účtu
+                            </th>
+                            <th>
                                 Zůstatek
                             </th>
                             <th>
                                 Disponibilní zůstatek
                             </th>
                             <th>
-                                Email
-                            </th>
-                            <th>
                                 Klient
                             </th>
                             <th>
-                                Typ
+                                Email
                             </th>
                             <th class="col-md-1">
                                 
@@ -76,19 +76,19 @@
                                     {$oAccount->number}
                                 </td>
                                 <td>
+                                    {if $oAccount->type}{$oAccount->type->name}{/if}
+                                </td>
+                                <td>
                                     {$oAccount->value}
                                 </td>
                                 <td>
                                     {$oAccount->avalaibleValue}
                                 </td>
                                 <td>
-                                    {if $oAccount->client}{$oAccount->client->email}{/if}
-                                </td>
-                                <td>
                                     {if $oAccount->client}{$oAccount->client->name} {$oAccount->client->surname}{/if}
                                 </td>
-                                 <td>
-                                    {if $oAccount->type}{$oAccount->type->name}{/if}
+                                <td>
+                                    {if $oAccount->client}{$oAccount->client->email}{/if}
                                 </td>
                                 <td class="dont-select">
                                     <a href="{site_url('cadvice/removeAccount')}/{$oAccount->ID}">
