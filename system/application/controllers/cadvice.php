@@ -11,7 +11,7 @@ class CAdvice extends MY_Controller{
 
     public function __construct($_internal_call = false) {
         parent::__construct($_internal_call);
-        $this->load->model(array('maccount', 'maccountType', 'mclient', 'mdelegatedPerson'));
+        $this->load->model(array('maccount', 'maccounttype', 'mclient', 'mdelegatedperson'));
     }
 
     public function index() {
