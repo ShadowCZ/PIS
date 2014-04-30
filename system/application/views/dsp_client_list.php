@@ -20,8 +20,8 @@
 
                     </form>
                     <div class=" col-md-6">
-                        <a href="{site_url('cadmin/showClientCreate')}/">
-                            <button  class="btn btn-success col-md-offset-5">Přidat záznam</button>
+                        <a href="{site_url('cadvice/showClient')}/">
+                            <button  class="btn btn-success col-md-offset-8">Přidat záznam</button>
                         </a>
                     </div>
                 </div>
@@ -45,12 +45,15 @@
                             <th>
                                 Email
                             </th>
+                            <th class="col-md-1">
+                                
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {foreach $aClients as $oClient}
                             <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                            <tr  class='clickableRow' href="{site_url('cadvice/showClientEdit')}/{$oClient->ID}">
+                            <tr  class='clickableRow' href="{site_url('cadvice/showClient')}/{$oClient->ID}">
                                 <td>
                                     {$oClient->ID}
                                 </td>
@@ -67,7 +70,7 @@
                                     {$oClient->email}
                                 </td>
                                 <td class="dont-select">
-                                    <a href="{site_url('cadmin/removeClient')}/{$oClient->ID}">
+                                    <a href="{site_url('cadvice/removeClient')}/{$oClient->ID}">
                                         <button type="button" class="btn btn-danger btn-md">
                                             <span class="glyphicon glyphicon-remove"></span>
                                         </button>

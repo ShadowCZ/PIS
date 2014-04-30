@@ -27,14 +27,14 @@ class CAdvice extends MY_Controller{
     
 	// zobrazí formulář pro vytvoření nového klienta
     public function showClientCreate() {
-        $this->s->displayWithHeader('dsp_client', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
     }    
 
         // zobrazí formulář pro vytvoření nového bankovního účtu pro zvoleného klienta
     public function showAccountCreate($iClient) {
         $oClient = $this->mclient->getById($iClient);
         $this->s->assign('oClient', $oClient);
-        $this->s->displayWithHeader('dsp_account', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     
         // zobrazí formulář pro editaci klienta
@@ -52,10 +52,10 @@ class CAdvice extends MY_Controller{
          
     
         // zobrazí formulář pro editaci klienta
-    public function showClientEdit($iClient) {
+    public function showClient($iClient=0) {
         $oClient = $this->mclient->getById($iClient);
         $this->s->assign('oClient', $oClient);
-        $this->s->displayWithHeader('dsp_client', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
     }    
      
 	// zrušení bankovního účtu příslušného uživatele

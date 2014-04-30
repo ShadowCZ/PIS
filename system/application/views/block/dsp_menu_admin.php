@@ -3,7 +3,7 @@
         <a href="{site_url('cadmin/showEmployeeList')}">Zaměstnanci</a>
     </li>
     <li>
-        {anchor uri="cadmin/showEmployee/" label="Přidat zaměstnance"}
+        {anchor uri="/cadvice/showClientList" label="Klienti"}
     </li>
     {*
     <li>
