@@ -42,8 +42,8 @@ class MAccount extends MY_Model
         'value' => array(
             'column_name' => 'value',
         ),
-        'avaibleValue' => array(
-            'column_name' => 'avaibleValue',
+        'avalaibleValue' => array(
+            'column_name' => 'avalaible_value',
         ),
     );
     

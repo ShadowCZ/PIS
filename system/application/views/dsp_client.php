@@ -64,9 +64,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input8" class="col-sm-2 control-label">Osobni číslo</label>
+                                <label for="input8" class="col-sm-2 control-label">Rodné číslo</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input8" name="personalNumber" placeholder="Osobni číslo" value="{if $oClient->personalNumber}{$oClient->personalNumber}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input8" name="personalNumber" placeholder="Rodné číslo" value="{if $oClient->personalNumber}{$oClient->personalNumber}{/if}">
                                 </div>
                             </div>
                         

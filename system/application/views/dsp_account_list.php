@@ -79,13 +79,16 @@
                                     {$oAccount->value}
                                 </td>
                                 <td>
-                                    {$oAccount->avaibleValue}
+                                    {$oAccount->avalaibleValue}
                                 </td>
                                 <td>
-                                    {if $oEmployee->client}{$oEmployee->client->surname}{/if}
+                                    {if $oAccount->client}{$oAccount->client->email}{/if}
+                                </td>
+                                <td>
+                                    {if $oAccount->client}{$oAccount->client->name} {$oAccount->client->surname}{/if}
                                 </td>
                                  <td>
-                                    {if $oEmployee->type}{$oEmployee->type->name}{/if}
+                                    {if $oAccount->type}{$oAccount->type->name}{/if}
                                 </td>
                                 <td class="dont-select">
                                     <a href="{site_url('cadvice/removeAccount')}/{$oAccount->ID}">
