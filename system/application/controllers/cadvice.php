@@ -39,11 +39,7 @@ class CAdvice extends MY_Controller{
     
         // zobrazí formulář pro editaci klienta
     public function showAccountList($iClient = 0, $sAccountFilter = "") {
-
-        $aAccounts = null;
-        if ($iClient > 0) {
-            $aAccounts = $this->maccount->getClientAccounts($iClient);
-        }
+        $aAccounts = $this->maccount->getClientAccounts($iClient, $sAccountFilter);
 
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->displayWithHeader('dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );

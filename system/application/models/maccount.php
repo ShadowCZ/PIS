@@ -76,21 +76,23 @@ class MAccount extends MY_Model
 
         $map = $this->getMap();
 
-        $sCond = "";
+        $sCond = "WHERE ";
         if ($iClient > 0) {
-            $sCond = "id_client = " . $iClient;
+            $sCond .= "id_client = " . $iClient;
         }
         
-        if (isset($sAccountFilter)) {
+        if (isset($sAccountFilter) && ! empty($sAccountFilter)) {
             if ($iClient > 0) {
                 $sCond .= " AND ";
             }
             $sCond .= "account_number LIKE " . $sAccountFilter;
         }
         $sql = "SELECT *
-               FROM account
-               WHERE " . $sCond;
-
+               FROM account ";
+        if (strlen($sCond) > 6) {
+            $sql .= $sCond;
+        }
+        
         $resources = $this->db->query( $sql );
 
         $aAccounts = array();
