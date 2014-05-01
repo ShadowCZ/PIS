@@ -21,6 +21,7 @@ class CAdvice extends MY_Controller{
 	// zobrazí přehled klientů
     public function showClientList() {
         $aClients = $this->mclient->getAll();
+        
         $this->s->assign('aClients', $aClients);
         $this->s->displayWithHeader('dsp_client_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
@@ -33,6 +34,7 @@ class CAdvice extends MY_Controller{
         // zobrazí formulář pro vytvoření nového bankovního účtu pro zvoleného klienta
     public function showAccountCreate($iClient) {
         $oClient = $this->mclient->getById($iClient);
+        
         $this->s->assign('oClient', $oClient);
         $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
@@ -47,7 +49,10 @@ class CAdvice extends MY_Controller{
         // zobrazí formulář pro editaci uctu
     public function showAccount($iClient=0) {
         $oAccount = $this->maccount->getById($iClient);
+        $aAccountTypes = $this->maccounttype->getAll();
+        
         $this->s->assign('oAccount', $oAccount);
+        $this->s->assign('aType', $aAccountTypes);
         $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
          

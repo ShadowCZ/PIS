@@ -60,7 +60,7 @@
                                      <select class="form-control" id="input10" name="type">
                                         {if ! empty($aType)}
                                             {foreach $aType as $oType}
-                                                <option value="{$oType->ID}" {if $oAccount->ID && $oType->ID == $oAccount->role} selected="selected"{/if}>{$oType->name}</option>
+                                                <option value="{$oType->ID}" {if $oAccount->ID && $oType->ID == $oAccount->type} selected="selected"{/if}>{$oType->name}</option>
                                             {/foreach}
                                         {/if}
                                     </select>
