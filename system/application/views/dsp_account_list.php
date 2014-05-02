@@ -15,7 +15,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Seznam zaměstnanců
+                    Seznam účtů
                 </h3>
             </div>
             <div class="panel-body">
@@ -29,7 +29,7 @@
 
                     </form>
                     <div class=" col-md-6">
-                        <a href="{site_url('cadvice/showAccount')}/">
+                        <a href="{site_url('cadvice/showAccountEdit')}/">
                             <button  class="btn btn-success col-md-offset-8">Přidat záznam</button>
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                             <th>
                                 Email
                             </th>
-                            <th class="col-md-1">
+                            <th class="col-md-2">
                                 
                             </th>
                         </tr>
@@ -91,6 +91,11 @@
                                     {if $oAccount->client}{$oAccount->client->email}{/if}
                                 </td>
                                 <td class="dont-select">
+                                    <a href="{site_url('cadvice/showAccountEdit')}/{$oAccount->ID}">
+                                        <button type="button" class="btn btn-success btn-md">
+                                            <span class="glyphicon glyphicon-cog"></span>
+                                        </button>
+                                    </a>
                                     <a href="{site_url('cadvice/removeAccount')}/{$oAccount->ID}">
                                         <button type="button" class="btn btn-danger btn-md">
                                             <span class="glyphicon glyphicon-remove"></span>
