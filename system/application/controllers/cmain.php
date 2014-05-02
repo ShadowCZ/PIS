@@ -50,7 +50,7 @@ class CMain extends MY_Controller{
 // Dočasná ukázka jak pracujeme s ORM
 //                'player_id' => $this->muser->player->ID,
 //                'ally_id' => $this->muser->player->ally->ID,
-                'role_id' => $this->memployee->role,
+                'role' => $this->memployee->role,
             );
 			// nastaví session
             $this->session->set_userdata($aSession);
@@ -66,6 +66,7 @@ class CMain extends MY_Controller{
         $this->session->set_userdata(array (
             'login' => 0,
             'user_name' => "",
+            'role' => "",
         ));
         
         // TODO: hláška odhlášení

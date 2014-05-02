@@ -115,4 +115,70 @@ class MOperation extends MY_Model
         }
         return $aOperations;
     }
+
+    /**
+     * Returns array of operations by delegated person for last days
+     * @param int $iPerson
+     * @param int $iDays
+     * @access public
+     * @return array
+     */
+    public function getLastOperations($iPerson = 0, $iDays) {
+
+        $map = $this->getMap();
+
+        if ($iPerson > 0) {
+            $sCond = "id_delegated_person=" . $iPerson;
+        } else {
+            $sCond = "";
+        }
+        $sCond .= " AND date < DATEADD(day, " . $iDays . ", GETDATE())";
+        
+        $sql = "SELECT *
+               FROM operation
+               WHERE " . $sCond;
+               
+        $resources = $this->db->query( $sql );
+
+        $aOperations = array();
+        foreach ($resources->result() as $row) {
+            $oOperation = new MOperation();
+            foreach ($row as $key => $att) {
+                $oOperation->$map[$key] = $att;
+            }
+            $aOperations[] = $oOperation;
+        }
+        return $aOperations;
+    }
+
+    /**
+     * Returns available cash in limit
+     * @param int $iPerson
+     * @param int $iDays
+     * @access public
+     * @return int
+     */
+    public function getAvailableCashInLimit($iPerson = 0, $iDays) {
+        
+        if ($iPerson < 1 || $iDays < 1) {
+            return false;
+        }
+    
+        $map = $this->getMap();
+
+        $sql = "SELECT SUM(value) as spend
+               FROM operation
+               WHERE id_operation_type != 2 AND id_delegated_person=" . $iPerson . " AND date < DATEADD(day, " . $iDays . ", GETDATE())";
+               
+        $resources = $this->db->query( $sql );
+        if (($row = current($resources->result())) == false) {
+            return false;
+        }
+        
+        $iSpend = $row["spend"];
+        $oPerson = new MPerson();
+        $oPerson->getById($iPerson);
+        
+        return $oPerson->limit - $iSpend;
+    }    
 }
