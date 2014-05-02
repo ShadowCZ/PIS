@@ -132,8 +132,8 @@ class MOperation extends MY_Model
         } else {
             $sCond = "";
         }
-        $sCond .= " AND date < DATEADD(day, " . $iDays . ", GETDATE())";
-        
+        $sCond .= " AND date >= DATE_ADD(CURDATE(), INTERVAL -" . $iDays . " DAY)";
+
         $sql = "SELECT *
                FROM operation
                WHERE " . $sCond;
@@ -168,15 +168,15 @@ class MOperation extends MY_Model
 
         $sql = "SELECT SUM(value) as spend
                FROM operation
-               WHERE id_operation_type != 2 AND id_delegated_person=" . $iPerson . " AND date < DATEADD(day, " . $iDays . ", GETDATE())";
+               WHERE id_operation_type != 2 AND id_delegated_person=" . $iPerson . " AND date >= DATE_ADD(CURDATE(), INTERVAL -" . $iDays . " DAY)";
                
         $resources = $this->db->query( $sql );
         if (($row = current($resources->result())) == false) {
             return false;
         }
-        
-        $iSpend = $row["spend"];
-        $oPerson = new MPerson();
+
+        $iSpend = $row->spend;
+        $oPerson = new MDelegatedPerson();
         $oPerson->getById($iPerson);
         
         return $oPerson->limit - $iSpend;

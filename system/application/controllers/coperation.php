@@ -7,7 +7,7 @@
  * @version 0.1.1.0
  */
 
-class CAdmin extends MY_Controller{
+class COperation extends MY_Controller{
 
     public function __construct($_internal_call = false) {
         parent::__construct($_internal_call);
@@ -36,7 +36,7 @@ class CAdmin extends MY_Controller{
     
     // Zobrazí přehled delegovaných osob
     public function showDelegatedPersonList($iAccount) {
-        $aPersons = $this->mdelegatedPerson->getByAccount($iAccount);
+        $aPersons = $this->mdelegatedperson->getByAccount($iAccount);
         
         $this->s->assign('aPersons', $aPersons);
         $this->s->displayWithHeader('operation\dsp_delegated_person_list.php', $this->aJavascriptFiles, $this->aCssFiles );
@@ -46,8 +46,8 @@ class CAdmin extends MY_Controller{
     public function showAccountDetail($iAccount, $iPerson) {
         $oAccount = $this->maccount->getById($iAccount);
         $oPerson = $this->mdelegatedperson->getById($iPerson);
-        $aOperations = $this->getLastOperations($iPerson, 30);
-        $iAvailableCash = $this->getAvailableCashInLimit($iPerson, 7);
+        $aOperations = $this->moperation->getLastOperations($iPerson, 30);
+        $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);
         
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('oPerson', $oPerson);
@@ -60,7 +60,7 @@ class CAdmin extends MY_Controller{
     public function showOperation($iAccount, $iPerson) {
         $oAccount = $this->maccount->getById($iAccount);
         $oPerson = $this->mdelegatedperson->getById($iPerson);
-        $iAvailableCash = $this->getAvailableCashInLimit($iPerson, 7);
+        $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);
 
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('oPerson', $oPerson);
@@ -72,7 +72,7 @@ class CAdmin extends MY_Controller{
     public function showTransfer($iAccount, $iPerson) {
         $oAccount = $this->maccount->getById($iAccount);
         $oPerson = $this->mdelegatedperson->getById($iPerson);
-        $iAvailableCash = $this->getAvailableCashInLimit($iPerson, 7);
+        $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);
 
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('oPerson', $oPerson);
