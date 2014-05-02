@@ -17,20 +17,12 @@ class CAdvice extends MY_Controller{
     public function index() {
         $this->showClientList();
     }
-    
-	// zobrazí přehled klientů
-    public function showClientList() {
-        $aClients = $this->mclient->getAll();
-        
-        $this->s->assign('aClients', $aClients);
-        $this->s->displayWithHeader('dsp_client_list.php', $this->aJavascriptFiles, $this->aCssFiles );
-    }
-    
-	// zobrazí formulář pro vytvoření nového klienta
+
+    	// zobrazí formulář pro vytvoření nového klienta
     public function showClientCreate() {
         $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
-    }    
-
+    }   
+    
         // zobrazí formulář pro vytvoření nového bankovního účtu pro zvoleného klienta
     public function showAccountCreate($iClient) {
         $oClient = $this->mclient->getById($iClient);
@@ -38,7 +30,7 @@ class CAdvice extends MY_Controller{
         $this->s->assign('oClient', $oClient);
         $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
-    
+     
         // zobrazí formulář pro editaci klienta
     public function showAccountList($iClient = 0, $sAccountFilter = "") {
         $aAccounts = $this->maccount->getClientAccounts($iClient, $sAccountFilter);
@@ -46,6 +38,169 @@ class CAdvice extends MY_Controller{
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->displayWithHeader('dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }      
+    
+	// zobrazí přehled klientů
+    public function showClientList() {
+        $aClients = $this->mclient->getAll();
+        
+        $this->s->assign('aClients', $aClients);
+        $this->s->displayWithHeader('dsp_client_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+    } 
+  
+        // zobrazí formular pro editaci klienta
+    public function showClientEdit($iClient) {
+        $oClient = $this->mclient->getById($iClient);
+        
+        $this->s->assign('oClient', $oClient);
+        $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
+    }   
+
+        // zobrazí detail uctu, seznam delegovanych osob, seznam operaci uctu
+    public function showAccountDetail($iAccount) {
+        $oAccount = $this->maccount->getById($iAccount);
+        $aPersons = $this->mdelegatedPerson->getByAccount($iAccount);
+        $aOperations = $this->moperation->getByAccount($iAccount); 
+        
+        $this->s->assign('oAccount', $oAccount);
+        $this->s->assign('aPersons', $aPersons);
+        $this->s->assign('aOperation', $aOperations);
+        $this->s->displayWithHeader('dsp_account_detail.php', $this->aJavascriptFiles, $this->aCssFiles );
+    }
+
+        // zobrazí formulář pro editaci účtu a jeho delegovaných osob
+    public function showAccountEdit($iAccount) {
+        $oAccount = $this->maccount->getById($iAccount);
+        $aPersons = $this->mdelegatedPerson->getByAccount($iAccount);
+        
+        $this->s->assign('oAccount', $oAccount);
+        $this->s->assign('aPersons', $aPersons);
+        $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
+    }
+    
+        // zobrazí formulář pro úpravu limitu delegované osoby
+        // pokud neni zadano ID klienta, jsou k uctu vypsany vsechny delegovane osoby
+    public function showDelegatedPerson($iAccount, $iClient = 0) {
+        if ($iClient > 0) {
+            $aPersons = $this->mdelegatedPerson->getById($iAccount, $iClient);
+        } else {
+            $aPersons = $this->mdelegatedPerson->getByAccount($iAccount);
+        }
+        $oAccount = $this->maccount->getById($iAccount);
+        
+        $this->s->assign('oAccount', $oAccount);
+        $this->s->assign('aPersons', $aPersons);
+        $this->s->displayWithHeader('dsp_delegated_person.php', $this->aJavascriptFiles, $this->aCssFiles );
+    }
+    
+        // funkce vytvori noveho klienta
+    public function createClient() {
+        if ($this->input->post('name')) {
+            $this->mclient->name = $this->input->post('name');
+        }  
+        if ($this->input->post('surname')) {
+            $this->mclient->surname = $this->input->post('surname');
+        }         
+        if ($this->input->post('address1')) {
+            $this->mclient->address1 = $this->input->post('address1');
+        }        
+        if ($this->input->post('address2')) {
+            $this->mclient->address2 = $this->input->post('address2');
+        }    
+        if ($this->input->post('postalCode')) {
+            $this->mclient->postalCode = $this->input->post('postalCode');
+        }            
+        if ($this->input->post('personalNumber')) {
+            $this->mclient->personalNumber = $this->input->post('personalNumber');
+        } 
+        if ($this->input->post('tel')) {
+            $this->mclient->tel = $this->input->post('tel');
+        } 
+        if ($this->input->post('email')) {
+            $this->mclient->email = $this->input->post('email');
+        } 
+
+        $this->mclient->update();
+        redirect('cadvice/showAccountCreate/', 'location');
+    }    
+
+            // funkce vytvori noveho ucet
+    public function createAccount($iClient) {
+        if ($this->input->post('type')) {
+            $this->maccount->type = $this->input->post('type');
+        }  
+        if ($this->input->post('client')) {
+            $this->maccount->client = $iClient;
+        }         
+        if ($this->input->post('number')) {
+            $this->maccount->number = $this->input->post('number');
+        }        
+        if ($this->input->post('value')) {
+            $this->maccount->value = 0;
+        }
+        if ($this->input->post('avalaibleValue')) {
+            $this->maccount->avalaibleValue = 0;
+        }  
+        
+        $this->maccount->update();
+        redirect('cadvice/showAccountList/'.$iClient, 'location');
+    }    
+    
+        // funkce updatuje zadaneho klienta
+    public function updateClient($iClient) {
+        $this->mclient = $this->mclient->getById($iClient);
+
+        if ($this->input->post('name')) {
+            $this->mclient->name = $this->input->post('name');
+        }  
+        if ($this->input->post('surname')) {
+            $this->mclient->surname = $this->input->post('surname');
+        }         
+        if ($this->input->post('address1')) {
+            $this->mclient->address1 = $this->input->post('address1');
+        }        
+        if ($this->input->post('address2')) {
+            $this->mclient->address2 = $this->input->post('address2');
+        }    
+        if ($this->input->post('postalCode')) {
+            $this->mclient->postalCode = $this->input->post('postalCode');
+        }            
+        if ($this->input->post('personalNumber')) {
+            $this->mclient->personalNumber = $this->input->post('personalNumber');
+        } 
+        if ($this->input->post('tel')) {
+            $this->mclient->tel = $this->input->post('tel');
+        } 
+        if ($this->input->post('email')) {
+            $this->mclient->email = $this->input->post('email');
+        } 
+
+        $this->mclient->update();
+        redirect('cadvice/showClientList/'.iClient, 'location');
+    } 
+    
+            // funkce updatuje zvoleny ucet
+    public function updateAccount($iAccount) {
+        $this->maccount = $this->maccount->getById($iAccount);
+        
+        if ($this->input->post('type')) {
+            $this->maccount->type = $this->input->post('type');
+        }  
+        if ($this->input->post('client')) {
+            $this->maccount->client = $this->input->post('client');
+        }         
+        if ($this->input->post('number')) {
+            $this->maccount->number = $this->input->post('number');
+        }        
+        if ($this->input->post('value')) {
+            $this->maccount->value = $this->input->post('value');
+        }
+        if ($this->input->post('avalaibleValue')) {
+            $this->maccount->avalaibleValue = $this->input->post('avalaibleValue');
+        }  
+        
+        $this->maccount->update();
+        redirect('cadvice/showAccountList/'.$iClient, 'location');
+    }   
     
     // zobrazí formulář s editací účtu
     public function showAccount($iAccount = 0) {
@@ -58,8 +213,7 @@ class CAdvice extends MY_Controller{
         $this->s->assign('aType', $aAccountTypes);
         $this->s->displayWithHeader('dsp_account_edit.php', $this->aJavascriptFiles, $this->aCssFiles );
     }  
-         
-    
+            
         // zobrazí formulář pro editaci klienta
     public function showClient($iClient=0) {
         if ($iClient > 0) {
