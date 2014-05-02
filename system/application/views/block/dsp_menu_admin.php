@@ -5,6 +5,9 @@
     <li>
         {anchor uri="/cadvice/showClientList" label="Klienti"}
     </li>
+    <li>
+        {anchor uri="/cadvice/showAccountList" label="Účty"}
+    </li>
     {*
     <li>
         <a href="#">X Účty</a>
