@@ -18,7 +18,7 @@ class MDelegatedPerson extends MY_Model
      */
     protected $_cols = array(
         'ID' => array(
-            'column_name' => 'id_delegate_person',
+            'column_name' => 'id_delegated_person',
         ),
         'client' => array(
             'column_name' => 'id_client',
@@ -100,7 +100,7 @@ class MDelegatedPerson extends MY_Model
 
         $sql = "SELECT *
                FROM delegated_person
-               WHERE id_account=" . $iAccount . " id_Client=" . $iClient;
+               WHERE id_account=" . $iAccount . " id_client=" . $iClient;
 
         $resources = $this->db->query( $sql );
 
