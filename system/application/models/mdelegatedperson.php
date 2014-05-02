@@ -95,12 +95,11 @@ class MDelegatedPerson extends MY_Model
      * @return bool
      */
     public function getByAccountAndClient($iAccount, $iClient) {
-
         $map = $this->getMap();
 
         $sql = "SELECT *
                FROM delegated_person
-               WHERE id_account=" . $iAccount . " id_client=" . $iClient;
+               WHERE id_account=" . $iAccount . " AND id_client=" . $iClient;
 
         $resources = $this->db->query( $sql );
 
@@ -111,6 +110,6 @@ class MDelegatedPerson extends MY_Model
             $this->$map[$key] = $att;
         }
         
-        return true;
+        return $this;
     }
 }

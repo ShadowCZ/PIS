@@ -63,4 +63,34 @@ class MClient extends MY_Model
     public function  __toString() {
         return $this->ID;
     }
+    
+    
+    /**
+     * Returns array of clients filtered by $ClientFilter
+     * @param string $ClientFilter
+     * @access public
+     * @return array
+     */
+    public function getFilteredClients($ClientFilter = null) {
+
+        $map = $this->getMap();
+
+        $sCond = " WHERE name LIKE '%" . $ClientFilter . "%' OR surname LIKE '%" . $ClientFilter . "%'";
+        
+        $sql = "SELECT * FROM client";
+        
+        $sql .= $sCond;
+      
+        $resources = $this->db->query( $sql );
+
+        $aClients = array();
+        foreach ($resources->result() as $row) {
+            $oClient = new MClient();
+            foreach ($row as $key => $att) {
+                $oClient->$map[$key] = $att;
+            }
+            $aClients[] = $oClient;
+        }
+        return $aClients;
+    }
 }
