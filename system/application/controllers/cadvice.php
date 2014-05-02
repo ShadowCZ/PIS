@@ -46,7 +46,8 @@ class CAdvice extends MY_Controller{
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->displayWithHeader('dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }      
-        // zobrazí formulář s operacemi na účtu
+    
+    // zobrazí formulář s editací účtu
     public function showAccount($iAccount = 0) {
         $oAccount = $this->maccount->getById($iAccount);
         $aAccountTypes = $this->maccounttype->getAll();
