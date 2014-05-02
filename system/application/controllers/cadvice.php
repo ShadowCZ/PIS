@@ -47,10 +47,12 @@ class CAdvice extends MY_Controller{
         $this->s->displayWithHeader('dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }      
         // zobrazí formulář pro editaci uctu
-    public function showAccount($iClient=0) {
-        $oAccount = $this->maccount->getById($iClient);
+    public function showAccount($iAccount = 0) {
+        $oAccount = $this->maccount->getById($iAccount);
         $aAccountTypes = $this->maccounttype->getAll();
+        $aDelegatedPersons = $this->mdelegatedperson->getByAccount($iAccount);
         
+        $this->s->assign('aDelegatedPersons', $aDelegatedPersons);
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('aType', $aAccountTypes);
         $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
