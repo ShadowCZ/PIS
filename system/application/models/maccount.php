@@ -105,4 +105,17 @@ class MAccount extends MY_Model
         }
         return $aAccounts;
     }
+    
+    // vraci ID vlastnika uctu
+    public function getAccountOwner($iAccount) {
+
+        $map = $this->getMap();
+        $sql = "SELECT id_client FROM account WHERE account_number='".$iAccount."'";
+
+        $resources = $this->db->query( $sql );
+
+        $row = $resources->result();
+
+        return $row[0]->id_client;
+    }
 }

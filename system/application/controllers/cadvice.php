@@ -228,6 +228,7 @@ class CAdvice extends MY_Controller{
      
 	// zrušení bankovního účtu příslušného uživatele
     public function removeAccount($iAccount) {
+        $iClient = $this->maccount->getAccountOwner($iAccount);
         $this->maccount->delete($iAccount);
         redirect('cadvice/showAccountList/'.$iClient, 'location');
     }
