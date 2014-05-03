@@ -70,7 +70,7 @@
                                     {$oAccount->value}
                                 </td>
                                 <td>
-                                    {$oAccount->avalaibleValue}
+                                    {$oAccount->availableValue}
                                 </td>
                                 <td>
                                     {if $oAccount->client}{$oAccount->client->name} {$oAccount->client->surname}{/if}
