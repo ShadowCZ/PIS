@@ -51,7 +51,7 @@
 {$oAccount->type->name}
 {$oAccount->client->name} {$oAccount->client->surname}
 {$oAccount->value}
-{$oAccount->avalaibleValue}
+{$oAccount->availableValue}
         
 {$oPerson->ID}
 {$oPerson->client->name} {$oPerson->client->surname}
