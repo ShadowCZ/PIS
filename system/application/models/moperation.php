@@ -115,6 +115,66 @@ class MOperation extends MY_Model
         }
         return $aOperations;
     }
+    
+        // vraci seznam transakci danneho uctu filtrovanych podle datumu
+    public function getTransfersByAccountAndDate($iAccount, $from, $to) {
+
+        $map = $this->getMap();
+
+        $sql = "SELECT o.*
+               FROM operation o
+               JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person
+               WHERE id_account=" . $iAccount . " AND id_operation_type=3";
+    
+        if (isset($from) && ! empty($from)) {
+            $sql .= "  AND date>=". $from;
+        }
+        if (isset($to) && ! empty($to)) {
+            $sql .= "  AND date<=". $to;
+        }        
+   
+        $resources = $this->db->query( $sql );
+
+        $aTransfers = array();
+        foreach ($resources->result() as $row) {
+            $oOperation = new MOperation();
+            foreach ($row as $key => $att) {
+                $oOperation->$map[$key] = $att;
+            }
+            $aTransfers[] = $oOperation;
+        }
+        return $aTransfers;
+    }
+    
+        // vraci seznam operaci danneho uctu filtrovanych podle datumu
+    public function getOperationsByAccountAndDate($iAccount, $from, $to) {
+
+        $map = $this->getMap();
+
+        $sql = "SELECT o.*
+               FROM operation o
+               JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person
+               WHERE id_account=" . $iAccount;
+    
+        if (isset($from) && ! empty($from)) {
+            $sql .= "  AND date>=". $from;
+        }
+        if (isset($to) && ! empty($to)) {
+            $sql .= "  AND date<=". $to;
+        }        
+   
+        $resources = $this->db->query( $sql );
+
+        $aOperations = array();
+        foreach ($resources->result() as $row) {
+            $oOperation = new MOperation();
+            foreach ($row as $key => $att) {
+                $oOperation->$map[$key] = $att;
+            }
+            $aOperations[] = $oOperation;
+        }
+        return $aOperations;
+    }
 
     /**
      * Returns array of operations by delegated person for last days
