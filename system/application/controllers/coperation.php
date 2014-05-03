@@ -23,7 +23,7 @@ class COperation extends MY_Controller{
         $aClients = $this->mclient->getAll();
         
         $this->s->assign('aClients', $aClients);
-        $this->s->displayWithHeader('operation\dsp_client_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('operation/dsp_client_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     
     // Zobrazí přehled účtů
@@ -31,7 +31,7 @@ class COperation extends MY_Controller{
         $aAccounts = $this->maccount->getClientAccounts($iClient, $sAccountFilter);
 
         $this->s->assign('aAccounts', $aAccounts);
-        $this->s->displayWithHeader('operation\dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('operation/dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }  
     
     // Zobrazí přehled delegovaných osob
@@ -39,7 +39,7 @@ class COperation extends MY_Controller{
         $aPersons = $this->mdelegatedperson->getByAccount($iAccount);
         
         $this->s->assign('aPersons', $aPersons);
-        $this->s->displayWithHeader('operation\dsp_delegated_person_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('operation/dsp_delegated_person_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
 
     // Zobrazí detail účtu s limetem pověřené osoby a se zbylou částkou, kterou může vybrat
@@ -53,7 +53,7 @@ class COperation extends MY_Controller{
         $this->s->assign('oPerson', $oPerson);
         $this->s->assign('aOperations', $aOperations);
         $this->s->assign('iAvailableCash', $iAvailableCash);
-        $this->s->displayWithHeader('operation\dsp_account_detail.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('operation/dsp_account_detail.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     
     // Zobrazí formulář pro vložení / vybrání částky
@@ -66,7 +66,7 @@ class COperation extends MY_Controller{
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('oPerson', $oPerson);
         $this->s->assign('iAvailableCash', $iAvailableCash);
-        $this->s->displayWithHeader('operation\dsp_operation.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('operation/dsp_operation.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     
     // Zobrazí formulář pro převod částky z účtu na účet
@@ -78,7 +78,7 @@ class COperation extends MY_Controller{
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('oPerson', $oPerson);
         $this->s->assign('iAvailableCash', $iAvailableCash);
-        $this->s->displayWithHeader('operation\dsp_transfer.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('operation/dsp_transfer.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     
     // Provede výběr
