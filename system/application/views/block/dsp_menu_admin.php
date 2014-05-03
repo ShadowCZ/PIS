@@ -8,6 +8,12 @@
     <li>
         {anchor uri="/cadvice/showAccountList" label="Účty"}
     </li>
+    <li>
+        {anchor uri="/coperation/showAccountList" label="Podat příkaz"}
+    </li>
+    <li>
+        {anchor uri="/coperation/showClientList" label="Netuším co to je"}
+    </li>
     {*
     <li>
         <a href="#">X Účty</a>
