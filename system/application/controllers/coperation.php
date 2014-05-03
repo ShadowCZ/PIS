@@ -57,11 +57,12 @@ class COperation extends MY_Controller{
     }
     
     // Zobrazí formulář pro vložení / vybrání částky
-    public function showOperation($iAccount, $iPerson) {
+    public function showOperation($iAccount, $iPerson, $iAction) {
         $oAccount = $this->maccount->getById($iAccount);
         $oPerson = $this->mdelegatedperson->getById($iPerson);
         $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);
 
+        $this->s->assign('iAction', $iAction);
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('oPerson', $oPerson);
         $this->s->assign('iAvailableCash', $iAvailableCash);
@@ -85,22 +86,22 @@ class COperation extends MY_Controller{
         $iValue = $this->input->post('value');
         if ($iValue < 1) {
             // TODO: error message
-            redirect('coperation/showOperation/$iAccount/$iPerson', 'location');
+            redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/2', 'location');
         }
     
         $this->moperation->delegatedPerson = $iPerson;
         $this->moperation->account = $iAccount;
         $this->moperation->employee = $this->session->userdata('user_id');
-        $this->moperation->type = 1;
+        $this->moperation->type = 2;
         $this->moperation->value = $iValue;
         $this->moperation->update();
 
-        $this->maccount->getById($iAccount);
+        $this->maccount = $this->maccount->getById($iAccount);
         $this->maccount->value -= $iValue;
         $this->maccount->avalaibleValue -= $iValue;
         $this->maccount->update();
         
-        redirect('coperation/showOperation/$iAccount/$iPerson', 'location');
+        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
     }
 
     // Provede vklad
@@ -108,7 +109,7 @@ class COperation extends MY_Controller{
         $iValue = $this->input->post('value');
         if ($iValue < 1) {
             // TODO: error message
-            redirect('coperation/showOperation/$iAccount/$iPerson', 'location');
+            redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/1', 'location');
         }
     
         $this->moperation->delegatedPerson = $iPerson;
@@ -118,12 +119,12 @@ class COperation extends MY_Controller{
         $this->moperation->value = $iValue;
         $this->moperation->update();
 
-        $this->maccount->getById($iAccount);
+        $this->maccount = $this->maccount->getById($iAccount);
         $this->maccount->value += $iValue;
         $this->maccount->avalaibleValue += $iValue;
         $this->maccount->update();
         
-        redirect('coperation/showOperation/$iAccount/$iPerson', 'location');
+        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
     }
     
     // Provede převod
@@ -131,7 +132,7 @@ class COperation extends MY_Controller{
         $iValue = $this->input->post('value');
         if ($iValue < 1) {
             // TODO: error message
-            redirect('coperation/showTransfer/$iAccount/$iPerson', 'location');
+            redirect('coperation/showTransfer/' . $iAccount . '/' . $iPerson, 'location');
         }
     
         $this->moperation->delegatedPerson = $iPerson;
@@ -147,10 +148,10 @@ class COperation extends MY_Controller{
         $this->moperation->message = $this->input->post('message');
         $this->moperation->update();
 
-        $this->maccount->getById($iAccount);
+        $this->maccount = $this->maccount->getById($iAccount);
         $this->maccount->avalaibleValue -= $iValue;
         $this->maccount->update();
     
-        redirect('coperation/showTransfer/$iAccount/$iPerson', 'location');
+        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
     }
 }
