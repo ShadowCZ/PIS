@@ -7,7 +7,7 @@
 {foreach $aPersons as $oPerson}
     {$oPerson->ID}
     {$oPerson->client->name} {$oPerson->client->surname}
-    {$oPerson->limit}
+    {$oPerson->client->limit}
 {/foreach}
 
 
