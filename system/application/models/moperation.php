@@ -149,6 +149,29 @@ class MOperation extends MY_Model
         return $aTransfers;
     }
     
+        // vraci seznam nevyrizenych transakci
+    public function getOutstandingTransfers() {
+
+        $map = $this->getMap();
+
+        $sql = "SELECT o.*
+               FROM operation o
+               JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person
+               WHERE id_operation_type=3 AND state is NULL";
+    
+        $resources = $this->db->query( $sql );
+
+        $aTransfers = array();
+        foreach ($resources->result() as $row) {
+            $oOperation = new MOperation();
+            foreach ($row as $key => $att) {
+                $oOperation->$map[$key] = $att;
+            }
+            $aTransfers[] = $oOperation;
+        }
+        return $aTransfers;
+    }
+    
         // vraci seznam operaci danneho uctu filtrovanych podle datumu
     public function getOperationsByAccountAndDate($iAccount, $from, $to) {
 

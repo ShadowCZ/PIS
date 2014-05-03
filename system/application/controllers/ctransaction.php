@@ -15,13 +15,10 @@ class CTransaction extends MY_Controller{
     }
 
     public function index() {
-        
-        $hit = $_SESSION['user_id'];
-        echo $hit;
-        //$this->showClientList();
+        $this->showOutstandingTransferList();
     }
 
-    	// zobrazí seznam vsech transakci filtrovanych podle vlastnika uctu, cisla uctu a datumu
+    	// seznam vsech transakci (bez vkladu a vyberu)
     public function showTransferList($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null)  {
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
@@ -43,10 +40,14 @@ class CTransaction extends MY_Controller{
         $aTransfers = $this->moperation->getTransfersByAccountAndDate($iAccount, $fromDate, $toDate);
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->assign('aTransfers', $aTransfers);
+        $this->s->assign('iClient', $iClient);
+        $this->s->assign('iAccount', $iAccount);
+        $this->s->assign('fromDate', $fromDate);
+        $this->s->assign('toDate', $toDate);            
         $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
     
-        // zobrazí formulář pro vytvoření nového bankovního účtu pro zvoleného klienta
+        // seznam vsech operaci (transakce, vklady, vybery)
     public function  showOperationList($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null) {
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
@@ -68,11 +69,15 @@ class CTransaction extends MY_Controller{
         $aOperations = $this->moperation->getOperationsByAccountAndDate($iAccount, $fromDate, $toDate);
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->assign('aOperations', $aOperations);
+        $this->s->assign('iClient', $iClient);
+        $this->s->assign('iAccount', $iAccount);
+        $this->s->assign('fromDate', $fromDate);
+        $this->s->assign('toDate', $toDate);        
         $this->s->displayWithHeader('dsp_operation_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
      
     
-        // zobrazí formulář pro editaci klienta
+        // detail operace
     public function showTransactionDetail($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation) {
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
@@ -97,7 +102,7 @@ class CTransaction extends MY_Controller{
         $this->s->displayWithHeader('dsp_transfer_detail.php', $this->aJavascriptFiles, $this->aCssFiles );        
     }      
     
-	// zobrazí přehled klientů
+	// seznam vsech vlastniku uctu
     public function showAccountOwnerList($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null) {
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
@@ -122,25 +127,55 @@ class CTransaction extends MY_Controller{
         $this->s->displayWithHeader('dsp_account_owner_list.php', $this->aJavascriptFiles, $this->aCssFiles );       
     } 
   
-        // zobrazí seznam vsech vlastniku uctu
+        // schvaleni prevodu mezi ucty
     public function doAcceptTransfer($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation) {
         $oOperation = $this->moperation->getById($iOperation);
         $oOperation->state = 1;
+        $oOperation->employee = $_SESSION['user_id'];
         $oOperation->update();
         redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'location');
     }   
 
-        // zobrazí formulář pro editaci účtu a jeho delegovaných osob
+        // zamitnuti prevodu mezi ucty
     public function doRejectTransfer($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation) {
         $oOperation = $this->moperation->getById($iOperation);
         $oOperation->state = 2;
+        $oOperation->employee = $_SESSION['user_id'];
         $oOperation->update();
         redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'location');
     }
     
-        // zobrazí detail uctu, seznam delegovanych osob, seznam operaci uctu
-    public function doExport($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $itype = 0) {
-
+        // vypis z uctu, podle promenne iType se rozhoduje o filtrovani transakci (1) nebo vsech operaci (0)
+    public function doExport($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iType = 0) {
+        if ($this->input->post('client')) {
+            $iClient = $this->input->post('client');
+        }
+        if ($this->input->post('account')) {
+            $iAccount = $this->input->post('account');
+        } 
+        if ($this->input->post('fromDate')) {
+            $fromDate = $this->input->post('fromDate');
+        } 
+        if ($this->input->post('toDate')) {
+            $toDate = $this->input->post('toDate');
+        }
+        if ($this->input->post('type')) {
+            $iType = $this->input->post('type');
+        } 
+        
+        if ($iType == 0) {
+            redirect('ctransaction/showOperationList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'location');
+        }
+        else {
+            redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'location');
+        }
     }
+    
+    	// seznam vsech nevyrizenych transakci (bez vkladu a vyberu)
+    public function showOutstandingTransferList()  {      
+        $aTransfers = $this->moperation->getOutstandingTransfers();
+        $this->s->assign('aTransfers', $aTransfers);
+        $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+    }  
 
 }
