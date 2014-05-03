@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class=" col-md-1">
-                    <a href="{site_url('cadvice/showTransfer')}/{$oAccount->ID}/{$oPerson->ID}">
+                    <a href="{site_url('coperation/showTransfer')}/{$oAccount->ID}/{$oPerson->ID}">
                         <button  class="btn btn-success col-md-offset-1">Převod</button>
                     </a>
                 </div>
