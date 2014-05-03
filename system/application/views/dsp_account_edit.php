@@ -14,11 +14,11 @@
                 <form class="form-horizontal" role="form" action="{site_url('cadvice/updateAccount/')}{if $oAccount->ID}/{$oAccount->ID}{/if}" method="post">
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="hidden" class="form-control" name="ID" value="{if $oAccount->ID}{$oAccount->ID}{/if}">
+                            <input readonly type="hidden" class="form-control" name="ID" value="{if $oAccount->ID}{$oAccount->ID}{/if}">
                             <div class="form-group">
                                 <label for="input1" class="col-sm-2 control-label">Číslo účtu</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input1" name="number" placeholder="Číslo účtu" value="{if $oAccount->number}{$oAccount->number}{/if}">
+                                    <input readonly required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input1" name="number" placeholder="Číslo účtu" value="{if $oAccount->number}{$oAccount->number}{/if}">
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label for="input8" class="col-sm-2 control-label">Zůstatek</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input8" name="value" placeholder="Zůstatek" value="{if $oAccount->value}{$oAccount->value}{/if}">
+                                    <input readonly required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input8" name="value" placeholder="Zůstatek" value="{if $oAccount->value}{$oAccount->value}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -51,7 +51,7 @@
                             <div class="form-group">
                                 <label required title="Toto pole je potřeba vyplnit." for="input11" class="col-sm-2 control-label">Disponibilní zůstatek</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input11" name="avaibleValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->avaibleValue}{$oAccount->avaibleValue}{/if}">
+                                    <input readonly type="text" class="form-control" id="input11" name="avaibleValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->avaibleValue}{$oAccount->avaibleValue}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">

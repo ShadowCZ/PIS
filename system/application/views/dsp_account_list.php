@@ -29,7 +29,7 @@
 
                     </form>
                     <div class=" col-md-6">
-                        <a href="{site_url('cadvice/showAccountEdit')}/">
+                        <a href="{site_url('cadvice/showAccount')}/">
                             <button  class="btn btn-success col-md-offset-8">Přidat záznam</button>
                         </a>
                     </div>
@@ -68,7 +68,7 @@
                     <tbody>
                         {foreach $aAccounts as $oAccount}
                             <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                            <tr  class='clickableRow' href="{site_url('cadvice/showAccount')}/{$oAccount->ID}">
+                            <tr  class='clickableRow' href="{site_url('cadvice/showAccountDetail')}/{$oAccount->ID}">
                                 <td>
                                     {$oAccount->ID}
                                 </td>
@@ -91,7 +91,7 @@
                                     {if $oAccount->client}{$oAccount->client->email}{/if}
                                 </td>
                                 <td class="dont-select">
-                                    <a href="{site_url('cadvice/showAccountEdit')}/{$oAccount->ID}">
+                                    <a href="{site_url('cadvice/showAccount')}/{$oAccount->ID}">
                                         <button type="button" class="btn btn-success btn-md">
                                             <span class="glyphicon glyphicon-cog"></span>
                                         </button>
