@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) {exit('No direct script access allowed');}
 /**
- * Controller for main page
+ * Controller for admin page
  * 
  * @author Radim Res
  * @package banka

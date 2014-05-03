@@ -63,7 +63,7 @@ class CAdvice extends MY_Controller{
         
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('aPersons', $aPersons);
-        $this->s->assign('aOperation', $aOperations);
+        $this->s->assign('aOperations', $aOperations);
         $this->s->displayWithHeader('dsp_account_detail.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
 

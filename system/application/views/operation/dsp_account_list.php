@@ -56,8 +56,7 @@
                     </thead>
                     <tbody>
                         {foreach $aAccounts as $oAccount}
-                            <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                            <tr  class='clickableRow' href="{site_url('coperation/showDelegatedPersonList')}/{$oAccount->ID}">
+                            <tr class='clickableRow' href="{site_url('coperation/showDelegatedPersonList')}/{$oAccount->ID}">
                                 <td>
                                     {$oAccount->ID}
                                 </td>
