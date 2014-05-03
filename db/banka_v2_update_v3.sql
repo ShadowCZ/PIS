@@ -1,0 +1,1 @@
+ALTER TABLE `account` CHANGE `avalaible_value` `available_value` INT( 11 ) NOT NULL ;

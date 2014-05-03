@@ -44,13 +44,13 @@
                             <div class="form-group">
                                 <label required title="Toto pole je potřeba vyplnit." for="input11" class="col-sm-2 control-label">Disponibilní zůstatek</label>
                                 <div class="col-sm-10">
-                                    <input readonly type="text" class="form-control" id="input11" name="avaibleValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->avaibleValue}{$oAccount->avaibleValue}{/if}">
+                                    <input readonly type="text" class="form-control" id="input11" name="availableValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->availableValue}{$oAccount->availableValue}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label required title="Toto pole je potřeba vyplnit." for="input10" class="col-sm-2 control-label">Typ</label>
                                 <div class="col-sm-10">
-                                     <input readonly type="text" class="form-control" id="input10" name="avaibleValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->type}{$oAccount->type->name}{/if}">
+                                     <input readonly type="text" class="form-control" id="input10" name="availableValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->type}{$oAccount->type->name}{/if}">
                                 </div>
                             </div>
                         </div>
@@ -98,10 +98,10 @@
                                 #
                             </th>
                             <th>
-                                Jméno
+                                Delegovaná osoba
                             </th>
                             <th>
-                                ???
+                                Zaměstnanec
                             </th>
                             <th>
                                 Typ
@@ -112,7 +112,6 @@
                             <th>
                                 Částka
                             </th>
-                            {if $oOperation->type->ID > 2}
                             <th>
                                 Cílový účet
                             </th>
@@ -131,7 +130,6 @@
                             <th>
                                 Zpráva
                             </th>
-                            {/if}
                         </tr>
                     </thead>
                     <tbody>

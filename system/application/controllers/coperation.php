@@ -98,7 +98,7 @@ class COperation extends MY_Controller{
 
         $this->maccount = $this->maccount->getById($iAccount);
         $this->maccount->value -= $iValue;
-        $this->maccount->avalaibleValue -= $iValue;
+        $this->maccount->availableValue -= $iValue;
         $this->maccount->update();
         
         redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
@@ -121,7 +121,7 @@ class COperation extends MY_Controller{
 
         $this->maccount = $this->maccount->getById($iAccount);
         $this->maccount->value += $iValue;
-        $this->maccount->avalaibleValue += $iValue;
+        $this->maccount->availableValue += $iValue;
         $this->maccount->update();
         
         redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
@@ -149,7 +149,7 @@ class COperation extends MY_Controller{
         $this->moperation->update();
 
         $this->maccount = $this->maccount->getById($iAccount);
-        $this->maccount->avalaibleValue -= $iValue;
+        $this->maccount->availableValue -= $iValue;
         $this->maccount->update();
     
         redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');

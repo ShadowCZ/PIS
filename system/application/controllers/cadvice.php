@@ -138,8 +138,8 @@ class CAdvice extends MY_Controller{
         if ($this->input->post('value')) {
             $this->maccount->value = 0;
         }
-        if ($this->input->post('avalaibleValue')) {
-            $this->maccount->avalaibleValue = 0;
+        if ($this->input->post('availableValue')) {
+            $this->maccount->availableValue = 0;
         }  
         
         $this->maccount->update();
@@ -195,8 +195,8 @@ class CAdvice extends MY_Controller{
         if ($this->input->post('value')) {
             $this->maccount->value = $this->input->post('value');
         }
-        if ($this->input->post('avalaibleValue')) {
-            $this->maccount->avalaibleValue = $this->input->post('avalaibleValue');
+        if ($this->input->post('availableValue')) {
+            $this->maccount->availableValue = $this->input->post('availableValue');
         }  
         
         $this->maccount->update();
