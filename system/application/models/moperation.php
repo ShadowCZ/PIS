@@ -68,6 +68,9 @@ class MOperation extends MY_Model
         'message' => array(
             'column_name' => 'message',
         ),
+        'state' => array(
+            'column_name' => 'state',
+        ),
     );
     
     /**
