@@ -45,7 +45,7 @@
                             <th>
                                 Email
                             </th>
-                            <th class="col-md-1">
+                            <th class="col-md-2">
                                 
                             </th>
                         </tr>
