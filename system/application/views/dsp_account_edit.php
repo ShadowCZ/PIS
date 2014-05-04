@@ -24,8 +24,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input2" class="col-sm-2 control-label">Klient</label>
-                                <div class="col-sm-10">
+                                <label for="input2" class="col-sm-3 control-label">Klient</label>
+                                <div class="col-sm-9">
                                     <div class="form-group">
                                         <input readonly required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="client_name" placeholder="Klient" value="{if $oAccount->client}{$oAccount->client->name} {$oAccount->client->surname}{/if}">
                                     </div>                                
@@ -37,15 +37,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input3" class="col-sm-2 control-label">Zůstatek</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10   ">
                                     <input readonly required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input3" name="value" placeholder="Zůstatek" value="{if $oAccount->value}{$oAccount->value}{/if}">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label required title="Toto pole je potřeba vyplnit." for="input4" class="col-sm-2 control-label">Disponibilní zůstatek</label>
-                                <div class="col-sm-10">
+                                <label required title="Toto pole je potřeba vyplnit." for="input4" class="col-md-4 control-label">Disponibilní zůstatek</label>
+                                <div class="col-md-8">
                                     <input readonly type="text" class="form-control" id="input4" name="avaibleValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->availableValue}{$oAccount->availableValue}{/if}">
                                 </div>
                             </div>
