@@ -153,11 +153,9 @@
                             </td>
                           
                             <td class="dont-select">
-                                <a href="{site_url('cadvice/xx')}/{$oAccount->ID}">
-                                    <button type="submit" class="btn btn-success btn-md">
+                                <button type="submit" class="btn btn-success btn-md">
                                         <span class="glyphicon glyphicon-plus"></span>
-                                    </button>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         {/if}

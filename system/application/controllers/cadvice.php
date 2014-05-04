@@ -245,12 +245,18 @@ class CAdvice extends MY_Controller{
              redirect('cadvice/showClientSelect/'.$iAccount, 'location');
         }
     */
-        if ($this->input->post('newPerson') === false) {
+        $iClient = $this->input->post('newPerson');
+        if ($iClient === false) {
+            // TODO: error
+            redirect('cadvice/showAccount/'.$iAccount, 'location');
+        }
+        
+        if ($this->mdelegatedperson->getByAccountAndClient($iAccount, $iClient) !== false) {
+            // TODO: error: person exists
             redirect('cadvice/showAccount/'.$iAccount, 'location');
         }
     
-        //$this->mdelegatedperson->client = $iClient;
-        $this->mdelegatedperson->client = $this->input->post('newPerson');
+        $this->mdelegatedperson->client = $iClient;
         $this->mdelegatedperson->account = $iAccount;
         $this->mdelegatedperson->limit = $this->input->post('newLimit');
         $this->mdelegatedperson->update();
