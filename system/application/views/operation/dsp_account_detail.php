@@ -6,7 +6,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Účet {$oAccount->number}
+                    Účet {$oAccount->number} ({$oAccount->type->name})
                 </h3>
             </div>
             <div class="panel-body">
@@ -26,46 +26,161 @@
                     </a>
                 </div>
             </div>
-<!--                         <div class="panel-footer">
-                Panel footer
-            </div> -->
         </div>
-        
-        
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                   Detaily účtu
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Vlastník
+                            </th>
+                            <th>
+                                Disponibilní zůstatek
+                            </th>
+                            <th>
+                                Zůstatek
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{$oAccount->client->name} {$oAccount->client->surname}</td>
+                            <td>{$oAccount->availableValue}</td>
+                            <td>{$oAccount->value}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                   Pověřená osoba
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Pověřená osoba
+                            </th>
+                            <th>
+                                K dispozici
+                            </th>
+                            <th>
+                                Limit
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{$oPerson->client->name} {$oPerson->client->surname}</td>
+                            <td>{$iAvailableCash}</td>
+                            <td>{$oPerson->limit}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-success">
+           <div class="panel-heading">
+                <h3 class="panel-title">
+                    Operace
+                </h3>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Delegovaná osoba
+                        </th>
+                        <th>
+                            Zaměstnanec
+                        </th>
+                        <th>
+                            Typ
+                        </th>
+                        <th>
+                            Datum
+                        </th>
+                        <th>
+                            Částka
+                        </th>
+                        <th>
+                            Cílový účet
+                        </th>
+                        <th>
+                            Banka
+                        </th>
+                        <th>
+                            VS
+                        </th>
+                        <th>
+                            SS
+                        </th>
+                        <th>
+                            CS
+                        </th>
+                        <th>
+                            Zpráva
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach $aOperations as $oOperation}
+                        <tr>
+                            <td>
+                                {$oOperation->ID}
+                            </td>
+                            <td>
+                                {$oOperation->delegatedPerson->client->name} {$oOperation->delegatedPerson->client->surname}
+                            </td>
+                            <td>
+                                {$oOperation->employee->name} {$oOperation->employee->surname}
+                            </td>
+                            <td>
+                                {$oOperation->type->name}
+                            </td>
+                            <td>
+                                {$oOperation->date}
+                            </td>
+                            <td>
+                                {$oOperation->value}
+                            </td>
+                            {if $oOperation->type->ID > 2}
+                            <td>
+                                {$oOperation->targetAccount}
+                            </td>
+                            <td>
+                                {$oOperation->bank}
+                            </td>
+                            <td>
+                                {$oOperation->VS}
+                            </td>
+                            <td>
+                                {$oOperation->SS}
+                            </td>
+                            <td>
+                                {$oOperation->CS}
+                            </td>
+                            <td>
+                                {$oOperation->message}
+                            </td>
+                            {/if}
+                        </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>        
     </div>
 </div>
-
-
-
-{$oAccount->type->name}
-{$oAccount->client->name} {$oAccount->client->surname}
-{$oAccount->value}
-{$oAccount->availableValue}
-        
-{$oPerson->ID}
-{$oPerson->client->name} {$oPerson->client->surname}
-{$iAvailableCash} / {$oPerson->limit}
-
-{foreach $aOperations as $oOperation}
-    {$oOperation->ID}
-    {$oOperation->delegatedPerson->client->name} {$oOperation->delegatedPerson->client->surname}
-    {$oOperation->employee->name} {$oOperation->employee->surname}
-    {$oOperation->type->name}
-    {$oOperation->date} (v db změněn na timestamp, nezapomeň aktualizovat db připraveným skriptem)
-    {$oOperation->value}
-
-    {if $oOperation->type->ID < 3}
-        Výběry/vklady (stejná šablona)
-        
-    {else}
-        Převody
-        mají navíc tyto atributy
-        {$oOperation->targetAccount}
-        {$oOperation->bank}
-        {$oOperation->VS}
-        {$oOperation->SS}
-        {$oOperation->CS}
-        {$oOperation->message}
-    {/if}
-    
-{/foreach}
