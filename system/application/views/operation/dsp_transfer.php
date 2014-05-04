@@ -6,7 +6,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Zadání převodu
+                    Zadání převodu {$oAccount->number} ({$oAccount->type->name})
                 </h3>
             </div>
             <div class="panel-body">
@@ -15,8 +15,8 @@
                         <button  class="btn btn-success col-md-offset-1">Zpět</button>
                     </a>
                 </div>
-
-                <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
+            </div>
+            <div class="panel-body">
                 <form class="form-horizontal" role="form" action="{site_url('coperation/doTransfer')}/{$oAccount->ID}/{$oPerson->ID}" method="post">
                     <div class="row">
                         <div class="col-md-6">
@@ -79,22 +79,67 @@
                     <button type="submit" class="btn btn-success col-md-offset-10">Uložit</button>
                 </form>
             </div>
-<!--                         <div class="panel-footer">
-                Panel footer
-            </div> -->
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                   Detaily účtu
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Vlastník
+                            </th>
+                            <th>
+                                Disponibilní zůstatek
+                            </th>
+                            <th>
+                                Zůstatek
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{$oAccount->client->name} {$oAccount->client->surname}</td>
+                            <td>{$oAccount->availableValue}</td>
+                            <td>{$oAccount->value}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        
-        
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                   Pověřená osoba
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Pověřená osoba
+                            </th>
+                            <th>
+                                K dispozici
+                            </th>
+                            <th>
+                                Limit
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{$oPerson->client->name} {$oPerson->client->surname}</td>
+                            <td>{$iAvailableCash}</td>
+                            <td>{$oPerson->limit}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> 
     </div>
 </div>
-
-
-
-{$oAccount->type->name}
-{$oAccount->client->name} {$oAccount->client->surname}
-{$oAccount->value}
-{$oAccount->availableValue}
-        
-{$oPerson->ID}
-{$oPerson->client->name} {$oPerson->client->surname}
-{$iAvailableCash} / {$oPerson->limit}
