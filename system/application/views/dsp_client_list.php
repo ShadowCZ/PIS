@@ -52,7 +52,6 @@
                     </thead>
                     <tbody>
                         {foreach $aClients as $oClient}
-                            <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
                             <tr  class='clickableRow' href="{site_url('cadvice/showAccountList')}/{$oClient->ID}">
                                 <td>
                                     {$oClient->ID}
