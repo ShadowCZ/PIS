@@ -223,7 +223,8 @@ class MOperation extends MY_Model
 
         $sql = "SELECT *
                FROM operation
-               WHERE " . $sCond;
+               WHERE " . $sCond . "
+               ORDER BY id_operation_type DESC";
                
         $resources = $this->db->query( $sql );
 
