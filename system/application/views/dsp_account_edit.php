@@ -67,7 +67,15 @@
                     </div>
                     <button type="submit" class="btn btn-success col-md-offset-10">Uložit</button>
                 </form>
-                
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Nastavení pověřených osob
+                </h3>
+            </div>
+            <div class="panel-body">
                 <form role="form" action="{site_url('cadvice/updateDelegatedPersons/')}" method="post">
                     <table class="table table-hover table-bordered">
                     <thead>
@@ -114,6 +122,15 @@
                     </table>
                     <button type="submit" class="btn btn-success col-md-offset-10">Uložit</button>
                 </form>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Pověřit osobu
+                </h3>
+            </div>
+            <div class="panel-body">
                 <form class="form-horizontal" role="form" action="{site_url('cadvice/addDelegatedPerson/')}/{$oAccount->ID}" method="post">
                     <table class="table table-hover table-bordered">
                     <thead>
