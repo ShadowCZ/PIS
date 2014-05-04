@@ -21,56 +21,56 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input1" class="col-sm-2 control-label">Částka</label>
-                                <div class="col-sm-10">
+                                <label for="input1" class="col-sm-4 control-label">Částka</label>
+                                <div class="col-sm-8">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input1" name="value" placeholder="Částka">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input2" class="col-sm-2 control-label">Číslo účtu</label>
-                                <div class="col-sm-10">
+                                <label for="input2" class="col-sm-4 control-label">Číslo účtu</label>
+                                <div class="col-sm-8">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="targetAccount" placeholder="Číslo účtu">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input3" class="col-sm-2 control-label">Banka</label>
-                                <div class="col-sm-10">
+                                <label for="input3" class="col-sm-4 control-label">Banka</label>
+                                <div class="col-sm-8">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input3" name="bank" placeholder="Banka">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input4" class="col-sm-2 control-label">Variabilní symbol</label>
-                                <div class="col-sm-10">
+                                <label for="input4" class="col-sm-4 control-label">Variabilní symbol</label>
+                                <div class="col-sm-8">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input4" name="VS" placeholder="Variabilní symbol">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input5" class="col-sm-2 control-label">Specifický symbol</label>
-                                <div class="col-sm-10">
+                                <label for="input5" class="col-sm-4 control-label">Specifický symbol</label>
+                                <div class="col-sm-8">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input5" name="SS" placeholder="Specifický symbol">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input6" class="col-sm-2 control-label">Konstantní symbol</label>
-                                <div class="col-sm-10">
+                                <label for="input6" class="col-sm-4 control-label">Konstantní symbol</label>
+                                <div class="col-sm-8">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input6" name="CS" placeholder="Konstantní symbol">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input7" class="col-sm-2 control-label">Zpráva</label>
-                                <div class="col-sm-10">
+                                <label for="input7" class="col-sm-4 control-label">Zpráva</label>
+                                <div class="col-sm-8">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input7" name="message" placeholder="Zpráva">
                                 </div>
                             </div>
