@@ -104,7 +104,8 @@ class MOperation extends MY_Model
         $sql = "SELECT o.*
                FROM operation o
                JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person
-               WHERE id_account=" . $iAccount;
+               WHERE id_account=" . $iAccount . "
+               ORDER BY o.id_operation_type DESC";
                
         $resources = $this->db->query( $sql );
 
