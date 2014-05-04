@@ -24,11 +24,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input2" class="col-sm-3 control-label">Klient</label>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input readonly required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="client_name" placeholder="Klient" value="{if $oAccount->client}{$oAccount->client->name} {$oAccount->client->surname}{/if}">
-                                    </div>                                
+                                <label for="input2" class="col-sm-5 control-label">Klient</label>
+                                <div class="col-sm-7">
+                                    <input readonly required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="client_name" placeholder="Klient" value="{if $oAccount->client}{$oAccount->client->name} {$oAccount->client->surname}{/if}">                              
                                 </div>
                             </div>
                         </div>
@@ -44,8 +42,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label required title="Toto pole je potřeba vyplnit." for="input4" class="col-md-4 control-label">Disponibilní zůstatek</label>
-                                <div class="col-md-8">
+                                <label required title="Toto pole je potřeba vyplnit." for="input4" class="col-md-5 control-label">Disponibilní zůstatek</label>
+                                <div class="col-md-7">
                                     <input readonly type="text" class="form-control" id="input4" name="avaibleValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->availableValue}{$oAccount->availableValue}{/if}">
                                 </div>
                             </div>
@@ -65,12 +63,12 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-success col-md-offset-10">Uložit</button>
+                        </div> 
                     </div>
+                    <button type="submit" class="btn btn-success col-md-offset-10">Uložit</button>
                 </form>
                 
-                <form class="form-horizontal" role="form" action="{site_url('cadvice/updateDelegatedPersons/')}" method="post">
+                <form role="form" action="{site_url('cadvice/updateDelegatedPersons/')}" method="post">
                     <table class="table table-hover table-bordered">
                     <thead>
                         <tr>

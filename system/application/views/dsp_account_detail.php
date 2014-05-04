@@ -42,14 +42,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label required title="Toto pole je potřeba vyplnit." for="input11" class="col-sm-2 control-label">Disponibilní zůstatek</label>
-                                <div class="col-sm-10">
+                                <label required title="Toto pole je potřeba vyplnit." for="input11" class="col-sm-5 control-label">Disponibilní zůstatek</label>
+                                <div class="col-sm-7">
                                     <input readonly type="text" class="form-control" id="input11" name="availableValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->availableValue}{$oAccount->availableValue}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label required title="Toto pole je potřeba vyplnit." for="input10" class="col-sm-2 control-label">Typ</label>
-                                <div class="col-sm-10">
+                                <label required title="Toto pole je potřeba vyplnit." for="input10" class="col-sm-5 control-label">Typ</label>
+                                <div class="col-sm-7">
                                      <input readonly type="text" class="form-control" id="input10" name="availableValue" placeholder="Disponibilní zůstatek" value="{if $oAccount->type}{$oAccount->type->name}{/if}">
                                 </div>
                             </div>

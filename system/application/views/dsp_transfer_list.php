@@ -6,7 +6,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Seznam transférů
+                    Seznam transakcí
                 </h3>
             </div>
             <div class="panel-body">
@@ -65,7 +65,12 @@
                     <br><br>
                 </form>
 
-
+                <div class="panel panel-success">
+                   <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Transakce
+                        </h3>
+                    </div>
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
@@ -106,7 +111,7 @@
                     </thead>
                     <tbody>
                         {foreach $aTransfers as $oTransfer}
-                            <tr class='clickableRow' href="{site_url('ctransaction/showTransferDetail')}/{if $iClient}{$iClient}{else}0{/if}/{if $iAccount}{$iAccount}{else}0{/if}/{if $fromDate}{$fromDate}{else}0{/if}/{if $toDate}{$toDate}{else}0{/if}/{$oTransfer->ID}">
+                            <tr class='clickableRow' href="{site_url('ctransaction/showTransactionDetail')}/{if $iClient}{$iClient}{else}0{/if}/{if $iAccount}{$iAccount}{else}0{/if}/{if $fromDate}{$fromDate}{else}0{/if}/{if $toDate}{$toDate}{else}0{/if}/{$oTransfer->ID}">
                                 <td>
                                     {$oTransfer->ID}
                                 </td>
@@ -147,6 +152,7 @@
                         {/foreach}
                     </tbody>
                 </table>
+            </div>
                 {* Přidáme až při rozšiřování
                 <div class="row clearfix">
                     <div class="col-md-offset-8 col-md-4 column ">
