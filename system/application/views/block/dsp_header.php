@@ -6,9 +6,11 @@
     <link href="http://static.freepik.com/darmowe-zdjecie/banku-budynku-ikony--psd_30-2524.jpg" rel="icon" type="image/png" />
 
     <link rel="stylesheet" href="http://localhost/PIS/static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="http://localhost/PIS/static/css/jquery-ui-1.10.4.custom.css" type="text/css">
 
     <script type="text/javascript" src="http://localhost/PIS/static/js/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="http://localhost/PIS/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://localhost/PIS/static/js/jquery-ui-1.10.4.custom.js"></script>
     <script type="text/javascript">
         {if $bLogout}
               window.location = "{site_url('cmain/')}";

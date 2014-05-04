@@ -29,9 +29,11 @@
 
                     </form>
                     <div class=" col-md-6">
-                        <a href="{site_url('cadvice/showAccount')}/">
-                            <button  class="btn btn-success col-md-offset-8">Přidat záznam</button>
-                        </a>
+                        {if $iClient > 0}
+                            <a href="{site_url('cadvice/showAccountCreate')}/{$iClient}">
+                                <button  class="btn btn-success col-md-offset-8">Založit nový účet</button>
+                            </a>
+                        {/if}
                     </div>
                 </div>
 
@@ -67,7 +69,7 @@
                     </thead>
                     <tbody>
                         {foreach $aAccounts as $oAccount}
-                            <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
+                        
                             <tr  class='clickableRow' href="{site_url('cadvice/showAccountDetail')}/{$oAccount->ID}">
                                 <td>
                                     {$oAccount->ID}

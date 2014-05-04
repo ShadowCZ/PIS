@@ -14,6 +14,12 @@
     <li>
         {anchor uri="/coperation/showClientList" label="Netuším co to je"}
     </li>
+    <li>
+        {anchor uri="/ctransaction/showTransferList" label="Potvrzení plateb"}
+    </li>
+    <li>
+        {anchor uri="/ctransaction/showOperationList" label="Přehled operací"}
+    </li>
     {*
     <li>
         <a href="#">X Účty</a>

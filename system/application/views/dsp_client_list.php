@@ -6,7 +6,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Seznam zaměstnanců
+                    Seznam klientů
                 </h3>
             </div>
             <div class="panel-body">
@@ -45,15 +45,14 @@
                             <th>
                                 Email
                             </th>
-                            <th class="col-md-1">
+                            <th class="col-md-2">
                                 
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {foreach $aClients as $oClient}
-                            <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                            <tr  class='clickableRow' href="{site_url('cadvice/showClient')}/{$oClient->ID}">
+                            <tr  class='clickableRow' href="{site_url('cadvice/showAccountList')}/{$oClient->ID}">
                                 <td>
                                     {$oClient->ID}
                                 </td>
@@ -70,6 +69,11 @@
                                     {$oClient->email}
                                 </td>
                                 <td class="dont-select">
+                                    <a href="{site_url('cadvice/showClient')}/{$oClient->ID}">
+                                        <button type="button" class="btn btn-success btn-md">
+                                            <span class="glyphicon glyphicon-cog"></span>
+                                        </button>
+                                    </a>
                                     <a href="{site_url('cadvice/removeClient')}/{$oClient->ID}">
                                         <button type="button" class="btn btn-danger btn-md">
                                             <span class="glyphicon glyphicon-remove"></span>
