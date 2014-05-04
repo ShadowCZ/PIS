@@ -1,5 +1,5 @@
 <html>
     xxxx test
-<?php echo $data['test']; ?>
+<?php echo $test; ?>
 </html>
 
