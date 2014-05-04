@@ -207,9 +207,11 @@ class CAdvice extends MY_Controller{
     public function showAccount($iAccount = 0) {
         $oAccount = $this->maccount->getById($iAccount);
         $aAccountTypes = $this->maccounttype->getAll();
-        $aDelegatedPersons = $this->mdelegatedperson->getByAccount($iAccount);
+        $aPersons = $this->mdelegatedperson->getByAccount($iAccount);
+        $aClients = $this->mclient->getAll();
         
-        $this->s->assign('aDelegatedPersons', $aDelegatedPersons);
+        $this->s->assign('aClients', $aClients);
+        $this->s->assign('aPersons', $aPersons);
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('aType', $aAccountTypes);
         $this->s->displayWithHeader('dsp_account_edit.php', $this->aJavascriptFiles, $this->aCssFiles );
@@ -238,38 +240,70 @@ class CAdvice extends MY_Controller{
     
         // prida delegovanou osobu k uctu
     public function addDelegatedPerson($iAccount, $iClient = 0) {
+    /*
         if ($iClient == 0) {
              redirect('cadvice/showClientSelect/'.$iAccount, 'location');
         }
-        $this->mdelegatedperson->client = $iClient;
+    */
+        if ($this->input->post('newPerson') === false) {
+            redirect('cadvice/showAccount/'.$iAccount, 'location');
+        }
+    
+        //$this->mdelegatedperson->client = $iClient;
+        $this->mdelegatedperson->client = $this->input->post('newPerson');
         $this->mdelegatedperson->account = $iAccount;
-        $this->mdelegatedperson->limit = 0;
+        $this->mdelegatedperson->limit = $this->input->post('newLimit');
         $this->mdelegatedperson->update();
-        redirect('cadvice/showDelegatedPerson/'.$iAccount."/".$iClient, 'location');
+        redirect('cadvice/showAccount/'.$iAccount, 'location');
     } 
     
-        // update limitu delegovane osoby
+    // update limitu delegovane osoby
     public function updateDelegatedPerson($iDelegatedPerson) {
         $this->mdelegatedperson = $this->mdelegatedperson->getById($iDelegatedPerson);   
         if ($this->input->post('limit')) {
             $this->mdelegatedperson->limit = $this->input->post('limit');
         }
+        
         $iAccount = $this->mdelegatedperson->account;
         $this->mdelegatedperson->update();
+        
         redirect('cadvice/showAccountDetail/'.$iAccount, 'location');
+    }
+    
+    // update limitu delegovane osoby
+    public function updateDelegatedPersons() {
+        $aLimits = $this->input->post('limit');
+
+        if ($aLimits === false) {
+            redirect('cadvice/showAccountDetail/'.$iAccount, 'location');
+        }
+        
+        foreach($aLimits as $iPerson => $iLimit) {
+            $this->mdelegatedperson = $this->mdelegatedperson->getById($iPerson);
+            $this->mdelegatedperson->limit = $iLimit;
+            $this->mdelegatedperson->update();
+        }
+ 
+        $iAccount = $this->mdelegatedperson->account;
+        
+        redirect('cadvice/showAccount/'.$iAccount, 'location');
     } 
     
 	// zrušení bankovního účtu příslušného uživatele
     public function removeAccount($iAccount) {
         $iClient = $this->maccount->getAccountOwner($iAccount);
         $this->maccount->delete($iAccount);
+        
         redirect('cadvice/showAccountList/'.$iClient, 'location');
     }
-        // odstrani delegovanou osobu
+    
+    // odstrani delegovanou osobu
     public function removeDelegatedPerson($iDelegatedPerson) {
         $this->mdelegatedperson = $this->mdelegatedperson->getById($iDelegatedPerson);
         $iAccount = $this->mdelegatedperson->account;
         $this->mdelegatedperson->delete();
-        redirect('cadvice/showAccountDetail/'.$iAccount, 'location');
+        
+        redirect('cadvice/showAccount/'.$iAccount, 'location');
+        //redirect('cadvice/showAccountDetail/'.$iAccount, 'location');
     }
 }
