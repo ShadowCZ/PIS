@@ -3,13 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/X:/xampp/htdocs/PIS/system/application/models/mclient.php</file>
             <file>file:/X:/xampp/htdocs/PIS/system/application/views/dsp_client_select.php</file>
-            <file>file:/X:/xampp/htdocs/PIS/system/application/views/dsp_client.php</file>
             <file>file:/X:/xampp/htdocs/PIS/system/application/views/dsp_account.php</file>
             <file>file:/X:/xampp/htdocs/PIS/system/application/core/MY_Model.php</file>
-            <file>file:/X:/xampp/htdocs/PIS/system/application/models/maccount.php</file>
             <file>file:/X:/xampp/htdocs/PIS/system/application/models/mdelegatedperson.php</file>
+            <file>file:/X:/xampp/htdocs/PIS/system/application/views/dsp_transfer_list.php</file>
+            <file>file:/X:/xampp/htdocs/PIS/system/application/views/dsp_client_list.php</file>
+            <file>file:/X:/xampp/htdocs/PIS/system/application/controllers/ctransaction.php</file>
+            <file>file:/X:/xampp/htdocs/PIS/system/application/models/moperation.php</file>
+            <file>file:/X:/xampp/htdocs/PIS/system/application/models/mclient.php</file>
+            <file>file:/X:/xampp/htdocs/PIS/system/application/views/dsp_client.php</file>
+            <file>file:/X:/xampp/htdocs/PIS/system/application/models/maccount.php</file>
             <file>file:/X:/xampp/htdocs/PIS/system/application/cache/index.html</file>
             <file>file:/X:/xampp/htdocs/PIS/system/application/controllers/cadvice.php</file>
             <file>file:/X:/xampp/htdocs/PIS/index.php</file>

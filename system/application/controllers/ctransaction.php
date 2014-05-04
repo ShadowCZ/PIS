@@ -177,5 +177,28 @@ class CTransaction extends MY_Controller{
         $this->s->assign('aTransfers', $aTransfers);
         $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }  
-
+      
+    public function generateOperationsToPDF($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null)  { 
+        $rand = rand();
+        $filename = md5($rand);
+        $filename .= '.pdf';
+        $pdfFilePath = 'download/'.$filename;
+        
+        if (file_exists($pdfFilePath) == FALSE)
+        {    
+            ini_set('memory_limit','32M'); // boost the memory limit if it's low <img src="http://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
+            $data['test'] = 'Hello world'; // pass data to the view
+            $html = $this->load->view('pdf_report', $data, true); // render the view into HTML
+            $this->load->library('pdf');
+            $pdf = $this->pdf->load();
+            $pdf->SetFooter('PIS'.'|{PAGENO}|'.date(DATE_RFC822)); // Add a footer for good measure <img src="http://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
+            $pdf->WriteHTML($html); // write the HTML into the PDF
+            $pdf->Output($pdfFilePath, 'F'); // save to file because we can
+            $this->load->helper('download');
+            $data = file_get_contents("download/" . $filename);
+            force_download($filename, $data);    
+        }
+            
+        $this->showOperationList($iClient, $iAccount, $fromDate, $toDate);   
+    }
 }
