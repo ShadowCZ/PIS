@@ -26,8 +26,10 @@ class CAdvice extends MY_Controller{
         // zobrazí formulář pro vytvoření nového bankovního účtu pro zvoleného klienta
     public function showAccountCreate($iClient) {
         $oClient = $this->mclient->getById($iClient);
+        $aTypes = $this->maccounttype->getAll();
         
         $this->s->assign('oClient', $oClient);
+        $this->s->assign('aTypes', $aTypes);
         $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
      
@@ -35,6 +37,7 @@ class CAdvice extends MY_Controller{
     public function showAccountList($iClient = 0, $sAccountFilter = "") {
         $aAccounts = $this->maccount->getClientAccounts($iClient, $sAccountFilter);
 
+        $this->s->assign('iClient', $iClient);
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->displayWithHeader('dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }      
@@ -129,18 +132,17 @@ class CAdvice extends MY_Controller{
         if ($this->input->post('type')) {
             $this->maccount->type = $this->input->post('type');
         }  
-        if ($this->input->post('client')) {
-            $this->maccount->client = $iClient;
-        }         
+
+        $this->maccount->client = $iClient;
+      
         if ($this->input->post('number')) {
             $this->maccount->number = $this->input->post('number');
         }        
         if ($this->input->post('value')) {
-            $this->maccount->value = 0;
+            $this->maccount->value = $this->input->post('value');
         }
-        if ($this->input->post('availableValue')) {
-            $this->maccount->availableValue = 0;
-        }  
+
+        $this->maccount->availableValue = $this->input->post('value');
         
         $this->maccount->update();
         redirect('cadvice/showAccountList/'.$iClient, 'location');
