@@ -19,29 +19,20 @@ function show_message($iType, $sTitle, $sMessage = null, $mDesc = null) {
 	
 	switch ($iType) {
 		case MSG_ERR:
-			$sMessage = '<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-				<p>
-					<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-					<strong>Error: </strong>'. $sTitle .'<br>'. $sMessage .' 
-				</p>
+			$sMessage = '<div class="alert alert-danger">
+					<strong>Chyba: </strong>'. $sTitle .'<br>'. $sMessage .'
 			</div>';
 			break;
 
 		case MSG_WRG:
-			$sMessage = '<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-				<p>
-					<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-					<strong>Warning: </strong>'. $sTitle .'<br>'. $sMessage .'
-				</p>
+			$sMessage = '<div class="alert alert-warning">
+					<strong>Varování: </strong>'. $sTitle .'<br>'. $sMessage .'
 			</div>';
 			break;
 
 		case MSG_INF:
-			$sMessage = '<div class="ui-state-active ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-				<p>
-					<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			$sMessage = '<div class="alert alert-info">
 					<strong>Info: </strong>'. $sTitle .'<br>'. $sMessage .'
-				</p>
 			</div>';
 			break;
 	}

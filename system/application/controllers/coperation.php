@@ -101,15 +101,15 @@ class COperation extends MY_Controller{
         $this->maccount->availableValue -= $iValue;
         $this->maccount->update();
         
-        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
+        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location', 'Transakce proběhla úspěšně', 1);
     }
 
     // Provede vklad
     public function doDeposit($iAccount, $iPerson) {
         $iValue = $this->input->post('value');
-        if ($iValue < 1) {
+        if ($iValue < 100) {
             // TODO: error message
-            redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/1', 'location');
+            redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/1', 'location', 'Minimální vklad je 100,-', 2);
         }
     
         $this->moperation->delegatedPerson = $iPerson;
@@ -124,15 +124,15 @@ class COperation extends MY_Controller{
         $this->maccount->availableValue += $iValue;
         $this->maccount->update();
         
-        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
+        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location', 'Transakce proběhla úspěšně', 1);
     }
     
     // Provede převod
     public function doTransfer($iAccount, $iPerson) {
         $iValue = $this->input->post('value');
-        if ($iValue < 1) {
+        if ($iValue < 100) {
             // TODO: error message
-            redirect('coperation/showTransfer/' . $iAccount . '/' . $iPerson, 'location');
+            redirect('coperation/showTransfer/' . $iAccount . '/' . $iPerson, 'location', 'Minimální převod je 100,-');
         }
     
         $this->moperation->delegatedPerson = $iPerson;
@@ -152,6 +152,6 @@ class COperation extends MY_Controller{
         $this->maccount->availableValue -= $iValue;
         $this->maccount->update();
     
-        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location');
+        redirect('coperation/showAccountDetail/' . $iAccount . '/' . $iPerson, 'location', 'Transakce proběhla úspěšně', 1);
     }
 }

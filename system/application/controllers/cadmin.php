@@ -42,8 +42,10 @@ class CAdmin extends MY_Controller{
 
 	// akce pro editaci a vytvoření nového zaměstnance
     public function updateEmployee($iEmployee = 0) {
+        $sMSGAction = "vyvořen";
         if ($iEmployee > 0) {
             $this->memployee = $this->memployee->getById($iEmployee);
+            $sMSGAction = "upraven";
         }
         //var_dump($oEmployee);
         if ($this->input->post('login')) {
@@ -82,13 +84,13 @@ class CAdmin extends MY_Controller{
 
         //$this->memployee->update();
         $this->memployee->update();
-        redirect('cadmin/showEmployeeList/', 'location');
+        redirect('cadmin/showEmployeeList/', 'location', 'Zaměstnanec úspěšně ' . $sMSGAction, 1);
     }
 
     
 	// zobrazí formulář pro přihlášení
     public function removeEmployee($iEmployee) {
         $this->memployee->delete($iEmployee);
-        redirect('cadmin/showEmployeeList/', 'location');
+        redirect('cadmin/showEmployeeList/', 'location', 'Zaměstnanec úspěšně odebrán', 1);
     }
 }

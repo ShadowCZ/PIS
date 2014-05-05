@@ -123,6 +123,63 @@
                         <th>
                             Částka
                         </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach $aOperations as $oOperation}
+                        {if $oOperation->type->ID <= 2}
+                        <tr>
+                            <td>
+                                {$oOperation->ID}
+                            </td>
+                            <td>
+                                {$oOperation->delegatedPerson->client->name} {$oOperation->delegatedPerson->client->surname}
+                            </td>
+                            <td>
+                                {$oOperation->employee->name} {$oOperation->employee->surname}
+                            </td>
+                            <td>
+                                {$oOperation->type->name}
+                            </td>
+                            <td>
+                                {$oOperation->date}
+                            </td>
+                            <td>
+                                {$oOperation->value}
+                            </td>
+                        </tr>
+                        {/if}
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Transakce
+                </h3>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Delegovaná osoba
+                        </th>
+                        <th>
+                            Zaměstnanec
+                        </th>
+                        <th>
+                            Typ
+                        </th>
+                        <th>
+                            Datum
+                        </th>
+                        <th>
+                            Částka
+                        </th>
                         <th>
                             Cílový účet
                         </th>
@@ -145,6 +202,7 @@
                 </thead>
                 <tbody>
                     {foreach $aOperations as $oOperation}
+                        {if $oOperation->type->ID > 2}
                         <tr>
                             <td>
                                 {$oOperation->ID}
@@ -164,7 +222,6 @@
                             <td>
                                 {$oOperation->value}
                             </td>
-                            {if $oOperation->type->ID > 2}
                             <td>
                                 {$oOperation->targetAccount}
                             </td>
@@ -182,9 +239,9 @@
                             </td>
                             <td>
                                 {$oOperation->message}
-                            </td>
-                            {/if}
+                            </td> 
                         </tr>
+                        {/if}
                     {/foreach}
                 </tbody>
             </table>
