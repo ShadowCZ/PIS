@@ -272,8 +272,12 @@ class MOperation extends MY_Model
         }
 
         $iSpend = $row->spend;
+        if ($iSpend == null) {
+            $iSpend = 0;
+        }
+        
         $oPerson = new MDelegatedPerson();
-        $oPerson->getById($iPerson);
+        $oPerson = $oPerson->getById($iPerson);
         
         return $oPerson->limit - $iSpend;
     }    
