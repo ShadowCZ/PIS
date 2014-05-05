@@ -99,7 +99,7 @@
         <div class="panel panel-success">
            <div class="panel-heading">
                 <h3 class="panel-title">
-                    Operace
+                    Vklady / výběry
                 </h3>
             </div>
             <table class="table table-hover table-bordered">
@@ -156,7 +156,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Transakce
+                    Převody
                 </h3>
             </div>
             <table class="table table-hover table-bordered">

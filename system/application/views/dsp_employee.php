@@ -5,7 +5,7 @@
     <div class="col-md-9 column">
         <ol class="breadcrumb">
             <li> <a href="{site_url('/cadmin/showEmployeeList')}">Zaměstnanci</a></li>
-            <li class="active">Detail</li>
+            <li class="active">Editace</li>
         </ol>
         {include file="./block/dsp_message.php"}
         

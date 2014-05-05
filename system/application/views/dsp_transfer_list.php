@@ -7,7 +7,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Seznam transakcí
+                    Seznam převodů
                 </h3>
             </div>
             <div class="panel-body">
@@ -69,7 +69,7 @@
                 <div class="panel panel-success">
                    <div class="panel-heading">
                         <h3 class="panel-title">
-                            Transakce
+                            Převody
                         </h3>
                     </div>
                 <table class="table table-hover table-bordered">
