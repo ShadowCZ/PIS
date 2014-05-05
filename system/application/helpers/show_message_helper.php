@@ -26,7 +26,7 @@ function show_message($iType, $sTitle, $sMessage = null, $mDesc = null) {
 
 		case MSG_WRG:
 			$sMessage = '<div class="alert alert-warning">
-					<strong>Varování: </strong>'. $sTitle .'<br>'. $sMessage .'
+					<strong>Upozornění: </strong>'. $sTitle .'<br>'. $sMessage .'
 			</div>';
 			break;
 
