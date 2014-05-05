@@ -18,7 +18,22 @@ class MY_Session extends CI_Session {
         
         if ($this->debug_session) echo "session: construct<br>";
         
-        if( !isset($_SESSION) ) session_start();
+        if( !isset($_SESSION) ) {
+            session_start();
+            
+            // 20 mins in seconds
+            $inactive = 1200;
+            
+            if (isset($_SESSION['timeout'])) {
+                $session_life = time() - $_SESSION['timeout']; 
+                if($session_life > $inactive) {
+                   session_destroy(); 
+                }
+            }
+            $_SESSION['timeout']=time();
+            
+        }
+        
         parent::__construct();
     }
 
