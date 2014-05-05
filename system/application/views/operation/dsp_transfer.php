@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label for="input4" class="col-sm-4 control-label">Variabilní symbol</label>
                                 <div class="col-sm-8">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input4" name="VS" placeholder="Variabilní symbol">
+                                    <input type="text" class="form-control" id="input4" name="VS" placeholder="Variabilní symbol">
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="input5" class="col-sm-4 control-label">Specifický symbol</label>
                                 <div class="col-sm-8">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input5" name="SS" placeholder="Specifický symbol">
+                                    <input type="text" class="form-control" id="input5" name="SS" placeholder="Specifický symbol">
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             <div class="form-group">
                                 <label for="input6" class="col-sm-4 control-label">Konstantní symbol</label>
                                 <div class="col-sm-8">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input6" name="CS" placeholder="Konstantní symbol">
+                                    <input type="text" class="form-control" id="input6" name="CS" placeholder="Konstantní symbol">
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <label for="input7" class="col-sm-4 control-label">Zpráva</label>
                                 <div class="col-sm-8">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input7" name="message" placeholder="Zpráva">
+                                    <input type="text" class="form-control" id="input7" name="message" placeholder="Zpráva">
                                 </div>
                             </div>
                         </div>
