@@ -24,7 +24,7 @@
 
                     </form>
                     <div class=" col-md-6">
-                        <a href="{site_url('cadvice/showClient')}/">
+                        <a href="{site_url('cadvice/showClientCreate/')}/">
                             <button  class="btn btn-success col-md-offset-8">Přidat záznam</button>
                         </a>
                     </div>
