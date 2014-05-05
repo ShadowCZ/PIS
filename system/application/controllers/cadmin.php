@@ -25,7 +25,7 @@ class CAdmin extends MY_Controller{
         $this->s->displayWithHeader('dsp_employee_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
 
-	// zobrazí formulář pro editaci a vkládání nových zaměstnanců
+	// zobrazí formulář pro editaci zaměstnanců
     public function showEmployee($iEmployee = 0) {
         if ($iEmployee > 0) {
             $oEmployee = $this->memployee->getById($iEmployee);
@@ -38,6 +38,13 @@ class CAdmin extends MY_Controller{
         $this->s->assign('aRole', $aRole);
         $this->s->assign('oEmployee', $oEmployee);
         $this->s->displayWithHeader('dsp_employee.php', $this->aJavascriptFiles, $this->aCssFiles );
+    }
+    
+	// zobrazí formulář pro vytvoření nového zaměstnance
+    public function createEmployee() {
+        $aRole = $this->mrole->getAll();
+        $this->s->assign('aRole', $aRole);
+        $this->s->displayWithHeader('dsp_create_employee.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
 
 	// akce pro editaci a vytvoření nového zaměstnance

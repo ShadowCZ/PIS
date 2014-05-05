@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `id_client` int(11) NOT NULL,
   `account_number` int(11) NOT NULL,
   `value` int(11) NOT NULL,
-  `avalaible_value` int(11) NOT NULL,
+  `available_value` int(11) NOT NULL,
   PRIMARY KEY (`id_account`),
   UNIQUE KEY `account_number` (`account_number`),
   KEY `id_account_type` (`id_account_type`),
