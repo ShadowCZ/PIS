@@ -128,8 +128,11 @@ class MOperation extends MY_Model
         $sql = "SELECT o.*
                FROM operation o
                JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person
-               WHERE id_account=" . $iAccount . " AND id_operation_type=3";
+               WHERE id_operation_type=3";
     
+        if (isset($iAccount) && ! empty($iAccount)) {
+            $sql .= "  AND id_account=" . $iAccount;
+        }     
         if (isset($from) && ! empty($from)) {
             $sql .= "  AND o.date >= '". $from ."'";
         }
@@ -181,9 +184,12 @@ class MOperation extends MY_Model
 
         $sql = "SELECT o.*
                FROM operation o
-               JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person
-               WHERE id_account=" . $iAccount;
-    
+               JOIN delegated_person d ON d.id_delegated_person = o.id_delegated_person WHERE 
+               id_operation_type=3 OR id_operation_type=2 OR id_operation_type=1";
+        
+        if (isset($iAccount) && ! empty($iAccount)) {
+            $sql .= " AND id_account=" . $iAccount;
+        } 
         if (isset($from) && ! empty($from)) {
             $sql .= "  AND o.date >= '". $from ."'";
         }

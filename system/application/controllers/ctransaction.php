@@ -37,7 +37,13 @@ class CTransaction extends MY_Controller{
         if ($iClient > 0) {
             $aAccounts = $this->maccount->getClientAccounts($iClient, "");
         }
-        $aTransfers = $this->moperation->getTransfersByAccountAndDate($iAccount, $fromDate, $toDate);
+        $aTransfers = array();
+        if ($iAccount > 0) {
+            $aTransfers = $this->moperation->getTransfersByAccountAndDate($iAccount, $fromDate, $toDate);
+        }
+        else {
+            $aTransfers = $this->moperation->getTransfersByAccountAndDate(null, $fromDate, $toDate);
+        }
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->assign('aTransfers', $aTransfers);
         $this->s->assign('iClient', $iClient);
@@ -66,7 +72,14 @@ class CTransaction extends MY_Controller{
         if ($iClient > 0) {
             $aAccounts = $this->maccount->getClientAccounts($iClient, "");
         }
-        $aOperations = $this->moperation->getOperationsByAccountAndDate($iAccount, $fromDate, $toDate);
+        $aOperations = array();
+        if ($iAccount > 0) {
+            $aOperations = $this->moperation->getOperationsByAccountAndDate($iAccount, $fromDate, $toDate);
+        }
+        else {
+            $aOperations = $this->moperation->getOperationsByAccountAndDate(null, $fromDate, $toDate);
+        }
+
         $this->s->assign('aAccounts', $aAccounts);
         $this->s->assign('aOperations', $aOperations);
         $this->s->assign('iClient', $iClient);
