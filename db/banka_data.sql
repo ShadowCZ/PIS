@@ -79,7 +79,7 @@ INSERT INTO `client` (`id_client`, `name`, `surname`, `address1`, `address2`, `p
 -- Vypisuji data pro tabulku `account`
 --
 
-INSERT INTO `account` (`id_account`, `id_account_type`, `id_client`, `account_number`, `value`, `avalaible_value`) VALUES
+INSERT INTO `account` (`id_account`, `id_account_type`, `id_client`, `account_number`, `value`, `available_value`) VALUES
 (1, 1, 1, 355421774, 55000, 55000),
 (2, 2, 1, 250022895, 235250, 235250),
 (3, 1, 2, 780520000, 23000, 23000),
