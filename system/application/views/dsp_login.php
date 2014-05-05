@@ -1,16 +1,3 @@
-<header class="col-md-12">
-    <nav class="navbar navbar-default col-md-6 col-md-offset-3" role="navigation">    
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <h3>
-                        Důvěryhodná banka
-                    </h3>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 <content class="col-md-12 container">
     {include file="./block/dsp_message.php"}
     <div class="col-md-offset-4 col-md-4">

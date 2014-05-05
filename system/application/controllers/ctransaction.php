@@ -11,6 +11,15 @@ class CTransaction extends MY_Controller{
 
     public function __construct($_internal_call = false) {
         parent::__construct($_internal_call);
+        
+        if( $this->session->userdata('login') != 1) {
+            $this->redirect('cmain/', 'Nejste přihlášen', 2);
+        }
+
+        if( $this->session->userdata('role') != 4) {
+            $this->redirect('cmain/', 'Nemáte oprávnění', 2);
+        }
+  
         $this->load->model(array('maccount', 'moperation', 'mclient'));
     }
 
@@ -153,7 +162,7 @@ class CTransaction extends MY_Controller{
         $oOperation->state = 1;
         $oOperation->employee = $_SESSION['user_id'];
         $oOperation->update();
-        $this->redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'P�evod byl schv�len', 1);
+        $this->redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'Převod byl schválen', 1);
     }   
 
         // zamitnuti prevodu mezi ucty
@@ -162,7 +171,7 @@ class CTransaction extends MY_Controller{
         $oOperation->state = 2;
         $oOperation->employee = $_SESSION['user_id'];
         $oOperation->update();
-        $this->redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'Klien byl odm�tnut', 1);
+        $this->redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'Klient byl odmítnut', 1);
     }
     
         // vypis z uctu, podle promenne iType se rozhoduje o filtrovani transakci (1) nebo vsech operaci (0)

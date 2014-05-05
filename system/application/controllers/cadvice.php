@@ -11,6 +11,15 @@ class CAdvice extends MY_Controller{
 
     public function __construct($_internal_call = false) {
         parent::__construct($_internal_call);
+        
+        if( $this->session->userdata('login') != 1) {
+            $this->redirect('cmain/', 'Nejste přihlášen', 2);
+        }
+
+        if( $this->session->userdata('role') != 2) {
+            $this->redirect('cmain/', 'Nemáte oprávnění', 2);
+        }
+        
         $this->load->model(array('maccount', 'maccounttype', 'mclient', 'mdelegatedperson', 'moperation'));
     }
 

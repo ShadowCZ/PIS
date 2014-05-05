@@ -50,7 +50,7 @@ class CMain extends MY_Controller{
 // Dočasná ukázka jak pracujeme s ORM
 //                'player_id' => $this->muser->player->ID,
 //                'ally_id' => $this->muser->player->ally->ID,
-                'role' => $this->memployee->role,
+                'role' => $this->memployee->role->ID,
             );
 			// nastaví session
             $this->session->set_userdata($aSession);
