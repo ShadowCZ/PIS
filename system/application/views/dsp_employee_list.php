@@ -25,7 +25,7 @@
                     </form>
                     <div class=" col-md-6">
                         <a href="{site_url('cadmin/showEmployee')}/">
-                            <button  class="btn btn-success col-md-offset-8">Přidat záznam</button>
+                            <button  class="btn btn-success col-md-offset-8">Přidat zaměstnance</button>
                         </a>
                     </div>
                 </div>
