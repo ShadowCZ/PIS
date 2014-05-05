@@ -4,6 +4,7 @@
     </div>
     <div class="col-md-9 column">
         <ol class="breadcrumb">
+            <li> <a href="{site_url('/cadvice/showClientList')}">Klienti</a></li>
             <li class="active">Účty</li>
         </ol>
         {include file="./block/dsp_message.php"}

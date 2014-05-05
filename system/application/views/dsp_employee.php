@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="input4" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <inputtype="email" class="form-control" id="input4" name="email" placeholder="Email"  value="{if $oEmployee->email}{$oEmployee->email}{/if}">
+                                    <input type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="{if $oEmployee->email}{$oEmployee->email}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">

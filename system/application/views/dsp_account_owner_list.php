@@ -1,5 +1,8 @@
 <div class="row clearfix">
     <div class="col-md-3 column">
+         <ol class="breadcrumb">
+            <li class="active">Klienti</li>
+        </ol>
         {include file="./block/dsp_menu_admin.php"}
     </div>
     <div class="col-md-9 column">

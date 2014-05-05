@@ -3,7 +3,14 @@
         {include file="./block/dsp_menu.php"}
     </div>
     <div class="col-md-9 column">
-    {include file="./block/dsp_message.php"}
+        <ol class="breadcrumb">
+            <li> <a href="{site_url('/coperation/showClientList')}">Klienti</a></li>
+            <li> <a href="{site_url('/coperation/showAccountList')}/{$oAccount->client->ID}">Účty</a></li>
+            <li> <a href="{site_url('/coperation/showDelegatedPersonList')}/{$oAccount->ID}">Delegované osoby</a></li>
+            <li> <a href="{site_url('/coperation/showAccountDetail')}/{$oAccount->ID}/{$oPerson->ID}">Detail</a></li>
+            <li class="active">Převody</li>
+        </ol>
+        {include file="./block/dsp_message.php"}
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
