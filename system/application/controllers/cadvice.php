@@ -20,7 +20,7 @@ class CAdvice extends MY_Controller{
 
     	// zobrazí formulář pro vytvoření nového klienta
     public function showClientCreate() {
-        $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('dsp_client_create.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
     
         // zobrazí formulář pro vytvoření nového bankovního účtu pro zvoleného klienta
@@ -303,6 +303,14 @@ class CAdvice extends MY_Controller{
         $this->maccount->delete($iAccount);
         
         redirect('cadvice/showAccountList/'.$iClient, 'location');
+    }
+    
+    	// odstraneni uzivatele ze systemu
+    public function removeClient($iClient) {
+        $oClient = $this->mclient->getById($iClient);
+        $oClient->delete();
+        
+        redirect('cadvice/showClientList/', 'location');
     }
     
     // odstrani delegovanou osobu

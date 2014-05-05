@@ -16,32 +16,31 @@
             </div>
             <div class="panel-body">
                 <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
-                <form class="form-horizontal" role="form" action="{site_url('cadvice/updateClient/')}{if $oClient->ID}/{$oClient->ID}{/if}" method="post">
+                <form class="form-horizontal" role="form" action="{site_url('cadvice/createClient/')}" method="post">
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="hidden" class="form-control" name="ID" value="{if $oClient->ID}{$oClient->ID}{/if}">
                             <div class="form-group">
                                 <label for="input1" class="col-sm-2 control-label">Jméno</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input1" name="name" placeholder="Jméno" value="{if $oClient->name}{$oClient->name}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input1" name="name" placeholder="Jméno" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input2" class="col-sm-2 control-label">Telefon</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="tel" placeholder="Telefon" value="{if $oClient->tel}{$oClient->tel}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="tel" placeholder="Telefon" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input5" class="col-sm-2 control-label">Město</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit."  type="text" class="form-control" id="input5" name="address1" placeholder="Město" value="{if $oClient->address1}{$oClient->address1}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit."  type="text" class="form-control" id="input5" name="address1" placeholder="Město" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input7" class="col-sm-2 control-label">PSČ</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input7" name="postalCode" placeholder="PSČ" value="{if $oClient->postalCode}{$oClient->postalCode}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input7" name="postalCode" placeholder="PSČ" value="">
                                 </div>
                             </div>
                         </div>
@@ -49,19 +48,19 @@
                             <div class="form-group">
                                 <label for="input3" class="col-sm-2 control-label">Příjmení</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input3" name="surname" placeholder="Příjmení" value="{if $oClient->surname}{$oClient->surname}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input3" name="surname" placeholder="Příjmení" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="{if $oClient->email}{$oClient->email}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input6" class="col-sm-2 control-label">Ulice</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="{if $oClient->address2}{$oClient->address2}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="">
                                 </div>
                             </div>
                         </div>
@@ -71,7 +70,7 @@
                             <div class="form-group">
                                 <label for="input8" class="col-sm-2 control-label">Rodné číslo</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input8" name="personalNumber" placeholder="Rodné číslo" value="{if $oClient->personalNumber}{$oClient->personalNumber}{/if}">
+                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input8" name="personalNumber" placeholder="Rodné číslo" value="">
                                 </div>
                             </div>
                         

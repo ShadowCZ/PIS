@@ -3,6 +3,9 @@
         {include file="./block/dsp_menu.php"}
     </div>
     <div class="col-md-9 column">
+        <ol class="breadcrumb">
+            <li class="active">Zaměstnanci</li>
+        </ol>
         {include file="./block/dsp_message.php"}
         <div class="panel panel-success">
             <div class="panel-heading">

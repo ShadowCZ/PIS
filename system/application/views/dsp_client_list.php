@@ -3,7 +3,10 @@
         {include file="./block/dsp_menu.php"}
     </div>
     <div class="col-md-9 column">
-    {include file="./block/dsp_message.php"}
+        <ol class="breadcrumb">
+            <li class="active">Klienti</li>
+        </ol>
+        {include file="./block/dsp_message.php"}
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -21,7 +24,7 @@
 
                     </form>
                     <div class=" col-md-6">
-                        <a href="{site_url('cadvice/showClient')}/">
+                        <a href="{site_url('cadvice/showClientCreate/')}/">
                             <button  class="btn btn-success col-md-offset-8">Přidat záznam</button>
                         </a>
                     </div>
