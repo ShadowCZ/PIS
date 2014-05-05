@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-9 column">
         <ol class="breadcrumb">
-            <li>Převody</li>
+            <li><a href="{site_url('ctransaction/showTransferList')}/{if $iClient}{$iClient}{else}0{/if}/{if $iAccount}{$iAccount}{else}0{/if}/{if $fromDate}{$fromDate}{else}0{/if}/{if $toDate}{$toDate}{else}0{/if}">Převody</a></li>
             <li class="active">Detail</li>
         </ol>
         {include file="./block/dsp_message.php"}
