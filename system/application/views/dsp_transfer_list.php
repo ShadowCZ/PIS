@@ -10,7 +10,7 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <form>
+                <form  method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
