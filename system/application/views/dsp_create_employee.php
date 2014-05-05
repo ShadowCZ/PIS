@@ -30,19 +30,19 @@
                             <div class="form-group">
                                 <label for="input2" class="col-sm-2 control-label">Telefon</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="tel" placeholder="Telefon" value="">
+                                    <input type="text" class="form-control" id="input2" name="tel" placeholder="Telefon" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input5" class="col-sm-2 control-label">Město</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit."  type="text" class="form-control" id="input5" name="address1" placeholder="Město" value="">
+                                    <input type="text" class="form-control" id="input5" name="address1" placeholder="Město" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input7" class="col-sm-2 control-label">PSČ</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input7" name="postalCode" placeholder="PSČ" value="">
+                                    <input type="text" class="form-control" id="input7" name="postalCode" placeholder="PSČ" value="">
                                 </div>
                             </div>
                         </div>
@@ -56,13 +56,13 @@
                             <div class="form-group">
                                 <label for="input4" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="">
+                                    <input type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input6" class="col-sm-2 control-label">Ulice</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="">
+                                    <input type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="">
                                 </div>
                             </div>
                         </div>
