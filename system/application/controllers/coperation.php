@@ -108,14 +108,18 @@ class COperation extends MY_Controller{
     public function doWithdraw($iAccount, $iPerson) {
         $iValue = $this->input->post('value');
         if ($iValue < 100) {
-            // TODO: error message
             $this->redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/2', 'Minimální výběr je 100,-', 2);
+        }
+        
+        $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);
+        if ($iValue > $iAvailableCash) {
+            $this->redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/2', 'Překročen týdenní limit. Dostupné: '. $iAvailableCash, 2);
         }
     
         $this->moperation->delegatedPerson = $iPerson;
         $this->moperation->account = $iAccount;
         $this->moperation->employee = $this->session->userdata('user_id');
-        $this->moperation->type = 2;
+        $this->moperation->type = 1;
         $this->moperation->value = $iValue;
         $this->moperation->update();
 
@@ -133,11 +137,11 @@ class COperation extends MY_Controller{
         if ($iValue < 100) {
             $this->redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/1', 'Minimální vklad je 100,-', 2);
         }
-    
+
         $this->moperation->delegatedPerson = $iPerson;
         $this->moperation->account = $iAccount;
         $this->moperation->employee = $this->session->userdata('user_id');
-        $this->moperation->type = 1;
+        $this->moperation->type = 2;
         $this->moperation->value = $iValue;
         $this->moperation->update();
 
@@ -155,7 +159,12 @@ class COperation extends MY_Controller{
         if ($iValue < 100) {
             $this->redirect('coperation/showTransfer/' . $iAccount . '/' . $iPerson, 'Minimální převod je 100,-');
         }
-    
+
+        $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);
+        if ($iValue > $iAvailableCash) {
+            $this->redirect('coperation/showTransfer/' . $iAccount . '/' . $iPerson, 'Překročen týdenní limit. Dostupné: '. $iAvailableCash, 2);
+        }
+        
         $this->moperation->delegatedPerson = $iPerson;
         $this->moperation->account = $iAccount;
         $this->moperation->employee = $this->session->userdata('user_id');
