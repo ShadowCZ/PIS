@@ -4,11 +4,11 @@
         <form method="post" action="{site_url('cmain/doLogin')}">
             <div class="form-group">
                 <label for="exampleInputLogin">Login</label>
-                <input  name="login" type="text" class="form-control" id="exampleInputLogin" placeholder="Login">
+                <input  name="login" type="text" class="form-control" id="exampleInputLogin" placeholder="Login" value="admin">
             </div>
             <div class="form-group">
                 <label for="exampleInputPass">Heslo</label>
-                <input  name="pass" type="password"class="form-control" id="exampleInputPass" placeholder="Password" value="t">
+                <input  name="pass" type="password"class="form-control" id="exampleInputPass" placeholder="Password" value="admin">
             </div>
             <div class="text-right">    {anchor uri="cmain/registration/" label="Registrace"}</div>
             <div class="text-right">
