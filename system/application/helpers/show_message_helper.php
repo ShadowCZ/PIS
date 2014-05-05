@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-define("MSG_ERR", 1);
+define("MSG_ERR", 3);
 define("MSG_WRG", 2);
-define("MSG_INF", 3);
+define("MSG_INF", 1);
 /**
  * Show error message
  *

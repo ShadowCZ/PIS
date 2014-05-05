@@ -124,7 +124,7 @@ class CAdvice extends MY_Controller{
         } 
 
         $iClient = $this->mclient->update();
-        redirect('cadvice/showAccountCreate/'.$iClient, 'location', 'Klient úspěšně vytvořen', 1);
+        $this->redirect('cadvice/showAccountCreate/'.$iClient, 'Klient úspěšně vytvořen', 1);
     }    
 
     // funkce pro vytvoření nového účtu
@@ -145,7 +145,7 @@ class CAdvice extends MY_Controller{
         $this->maccount->availableValue = $this->input->post('value');
         
         $this->maccount->update();
-        redirect('cadvice/showAccountList/'.$iClient, 'location', 'Účet úspěšně vytvořen', 1);
+        $this->redirect('cadvice/showAccountList/'.$iClient, 'Účet úspěšně vytvořen', 1);
     }    
     
     // funkce updatuje zadaneho klienta
@@ -178,7 +178,7 @@ class CAdvice extends MY_Controller{
         } 
 
         $this->mclient->update();
-        redirect('cadvice/showClientList/'.iClient, 'location', 'Klient úspěšně upraven', 1);
+        $this->redirect('cadvice/showClientList/'.iClient, 'Klient úspěšně upraven', 1);
     } 
     
     // funkce updatuje zvoleny ucet
@@ -202,7 +202,7 @@ class CAdvice extends MY_Controller{
         }  
         
         $this->maccount->update();
-        redirect('cadvice/showAccountList/'.$iClient, 'location', 'Účet úspěšně upraven', 1);
+        $this->redirect('cadvice/showAccountList/'.$iClient, 'Účet úspěšně upraven', 1);
     }   
     
     // zobrazí formulář s editací účtu
@@ -244,23 +244,23 @@ class CAdvice extends MY_Controller{
     public function addDelegatedPerson($iAccount, $iClient = 0) {
     /*
         if ($iClient == 0) {
-             redirect('cadvice/showClientSelect/'.$iAccount, 'location');
+             $this->redirect('cadvice/showClientSelect/'.$iAccount, 'location');
         }
     */
         $iClient = $this->input->post('newPerson');
         if ($iClient === false) {
-            redirect('cadvice/showAccount/'.$iAccount, 'location', 'location', 'Klient nevybrán', 3);
+            $this->redirect('cadvice/showAccount/'.$iAccount, 'Klient nevybrán', 3);
         }
         
         if ($this->mdelegatedperson->getByAccountAndClient($iAccount, $iClient) !== false) {
-            redirect('cadvice/showAccount/'.$iAccount, 'location', 'Osoba již byla pověřena', 2);
+            $this->redirect('cadvice/showAccount/'.$iAccount, 'Osoba již byla pověřena', 2);
         }
     
         $this->mdelegatedperson->client = $iClient;
         $this->mdelegatedperson->account = $iAccount;
         $this->mdelegatedperson->limit = $this->input->post('newLimit');
         $this->mdelegatedperson->update();
-        redirect('cadvice/showAccount/'.$iAccount, 'location', 'Osoba úspěšně pověřena', 1);
+        $this->redirect('cadvice/showAccount/'.$iAccount, 'Osoba úspěšně pověřena', 1);
     } 
     
     // update limitu delegovane osoby
@@ -273,7 +273,7 @@ class CAdvice extends MY_Controller{
         $iAccount = $this->mdelegatedperson->account;
         $this->mdelegatedperson->update();
         
-        redirect('cadvice/showAccountDetail/'.$iAccount, 'location', 'Limit úspěšně upraven', 1);
+        $this->redirect('cadvice/showAccountDetail/'.$iAccount, 'Limit úspěšně upraven', 1);
     }
     
     // update limitu delegovane osoby
@@ -281,7 +281,7 @@ class CAdvice extends MY_Controller{
         $aLimits = $this->input->post('limit');
 
         if ($aLimits === false) {
-            redirect('cadvice/showAccountDetail/'.$iAccount, 'location', 'Limity nemohly být nastaveny', 2);
+            $this->redirect('cadvice/showAccountDetail/'.$iAccount, 'Limity nemohly být nastaveny', 2);
         }
         
         foreach($aLimits as $iPerson => $iLimit) {
@@ -292,7 +292,7 @@ class CAdvice extends MY_Controller{
  
         $iAccount = $this->mdelegatedperson->account;
         
-        redirect('cadvice/showAccount/'.$iAccount, 'location', 'Limity byly úspěšně upraveny', 1);
+        $this->redirect('cadvice/showAccount/'.$iAccount, 'Limity byly úspěšně upraveny', 1);
     } 
     
 	// zrušení bankovního účtu příslušného uživatele
@@ -300,7 +300,7 @@ class CAdvice extends MY_Controller{
         $iClient = $this->maccount->getAccountOwner($iAccount);
         $this->maccount->delete($iAccount);
         
-        redirect('cadvice/showAccountList/'.$iClient, 'location', 'Účet úspěšně odstraněn', 1);
+        $this->redirect('cadvice/showAccountList/'.$iClient, 'Účet úspěšně odstraněn', 1);
     }
     
     	// odstraneni uzivatele ze systemu
@@ -308,7 +308,7 @@ class CAdvice extends MY_Controller{
         $oClient = $this->mclient->getById($iClient);
         $oClient->delete();
         
-        redirect('cadvice/showClientList/', 'location', 'Klient úspěšně odstraněn', 1);
+        $this->redirect('cadvice/showClientList/', 'Klient úspěšně odstraněn', 1);
     }
     
     // odstrani delegovanou osobu
@@ -317,7 +317,7 @@ class CAdvice extends MY_Controller{
         $iAccount = $this->mdelegatedperson->account;
         $this->mdelegatedperson->delete();
         
-        redirect('cadvice/showAccount/'.$iAccount, 'location', 'Pověřená osoba byla úspěšně odebrána', 1);
-        //redirect('cadvice/showAccountDetail/'.$iAccount, 'location');
+        $this->redirect('cadvice/showAccount/'.$iAccount, 'Pověřená osoba byla úspěšně odebrána', 1);
+        //$this->redirect('cadvice/showAccountDetail/'.$iAccount, 'location');
     }
 }

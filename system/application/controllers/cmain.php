@@ -54,10 +54,13 @@ class CMain extends MY_Controller{
             );
 			// nastaví session
             $this->session->set_userdata($aSession);
-            redirect('cmain/', 'location');
+            $this->redirect('cmain/', 'Úspěšně přihlášen', 1);
         } else {
-            // TODO: chybová hláška
-            $this->showLogin();
+            if ($this->memployee->isActive()) {
+                $this->redirect('cmain/', 'Špatné přihlašovací údaje', 2);
+            } else {
+                $this->redirect('cmain/', 'Uživatel nebyl aktivován', 2);
+            }
         }
     }
     
@@ -69,7 +72,6 @@ class CMain extends MY_Controller{
             'role' => "",
         ));
         
-        // TODO: hláška odhlášení
-        redirect('cmain/', 'location');
+        $this->redirect('cmain/', 'Úspěšně odhlášen', 1);
     }
 }

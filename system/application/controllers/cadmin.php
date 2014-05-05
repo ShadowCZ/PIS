@@ -84,13 +84,13 @@ class CAdmin extends MY_Controller{
 
         //$this->memployee->update();
         $this->memployee->update();
-        redirect('cadmin/showEmployeeList/', 'location', 'Zaměstnanec úspěšně ' . $sMSGAction, 1);
+        $this->redirect('cadmin/showEmployeeList/', 'Zaměstnanec úspěšně ' . $sMSGAction, 1);
     }
 
     
 	// zobrazí formulář pro přihlášení
     public function removeEmployee($iEmployee) {
         $this->memployee->delete($iEmployee);
-        redirect('cadmin/showEmployeeList/', 'location', 'Zaměstnanec úspěšně odebrán', 1);
+        $this->redirect('cadmin/showEmployeeList/', 'Zaměstnanec úspěšně odebrán', 1);
     }
 }

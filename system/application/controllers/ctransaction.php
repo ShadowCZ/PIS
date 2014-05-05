@@ -153,7 +153,7 @@ class CTransaction extends MY_Controller{
         $oOperation->state = 1;
         $oOperation->employee = $_SESSION['user_id'];
         $oOperation->update();
-        redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'location', 'Pøevod byl schválen', 1);
+        $this->redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'Pøevod byl schválen', 1);
     }   
 
         // zamitnuti prevodu mezi ucty
@@ -162,7 +162,7 @@ class CTransaction extends MY_Controller{
         $oOperation->state = 2;
         $oOperation->employee = $_SESSION['user_id'];
         $oOperation->update();
-        redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'location', 'Klien byl odmítnut', 1);
+        $this->redirect('ctransaction/showTransferList/'.$iClient.'/'.$iAccount.'/'.$fromDate.'/'.$toDate, 'Klien byl odmítnut', 1);
     }
     
         // vypis z uctu, podle promenne iType se rozhoduje o filtrovani transakci (1) nebo vsech operaci (0)
