@@ -30,19 +30,19 @@
                             <div class="form-group">
                                 <label for="input2" class="col-sm-2 control-label">Telefon</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input2" name="tel" placeholder="Telefon" value="{if $oEmployee->tel}{$oEmployee->tel}{/if}">
+                                    <input type="text" class="form-control" id="input2" name="tel" placeholder="Telefon" value="{if $oEmployee->tel}{$oEmployee->tel}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input5" class="col-sm-2 control-label">Město</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit."  type="text" class="form-control" id="input5" name="address1" placeholder="Město" value="{if $oEmployee->address1}{$oEmployee->address1}{/if}">
+                                    <input type="text" class="form-control" id="input5" name="address1" placeholder="Město" value="{if $oEmployee->address1}{$oEmployee->address1}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input7" class="col-sm-2 control-label">PSČ</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input7" name="postalCode" placeholder="PSČ" value="{if $oEmployee->postalCode}{$oEmployee->postalCode}{/if}">
+                                    <input type="text" class="form-control" id="input7" name="postalCode" placeholder="PSČ" value="{if $oEmployee->postalCode}{$oEmployee->postalCode}{/if}">
                                 </div>
                             </div>
                         </div>
@@ -56,13 +56,13 @@
                             <div class="form-group">
                                 <label for="input4" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="{if $oEmployee->email}{$oEmployee->email}{/if}">
+                                    <inputtype="email" class="form-control" id="input4" name="email" placeholder="Email"  value="{if $oEmployee->email}{$oEmployee->email}{/if}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input6" class="col-sm-2 control-label">Ulice</label>
                                 <div class="col-sm-10">
-                                    <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="{if $oEmployee->address2}{$oEmployee->address2}{/if}">
+                                    <input  type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="{if $oEmployee->address2}{$oEmployee->address2}{/if}">
                                 </div>
                             </div>
                         </div>

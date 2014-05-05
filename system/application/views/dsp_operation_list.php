@@ -18,14 +18,12 @@
                                 <label for="input10" class="col-sm-2 control-label">Účet</label>
                                 <div class="col-sm-10">
                                      <select class="form-control" id="input10" name="account">
-                                        <option value="1">Ucet 1</option>
-                                        {*
-                                        {if ! empty($aType)}
-                                            {foreach $aType as $oType}
-                                                <option value="{$oType->ID}" {if $oAccount->ID && $oType->ID == $oAccount->type} selected="selected"{/if}>{$oType->name}</option>
+                                        <option value="">---------</option>
+                                        {if ! empty($aAccounts)}
+                                            {foreach $aAccounts as $oAccount}
+                                                <option value="{$oAccount->ID}" {if $oAccount->ID && $oAccount->ID == $iAccount} selected="selected"{/if}>{$oAccount->number}</option>
                                             {/foreach}
                                         {/if}
-                                        *}
                                     </select>
                                 </div>
                             </div>
@@ -42,14 +40,12 @@
                                 <label for="input11" class="col-sm-2 control-label">Klient</label>
                                 <div class="col-sm-10">
                                      <select class="form-control" id="input11" name="client">
-                                        <option value="1">Klient 1</option>
-                                        {*
-                                        {if ! empty($aType)}
-                                            {foreach $aType as $oType}
-                                                <option value="{$oType->ID}" {if $oAccount->ID && $oType->ID == $oAccount->type} selected="selected"{/if}>{$oType->name}</option>
+                                         <option value="">---------</option>
+                                        {if ! empty($aAccounts)}
+                                            {foreach $aClients as $oClient}
+                                                <option value="{$oClient->ID}" {if $oClient->ID && $oClient->ID == $iAccount} selected="selected"{/if}>{$oClient->name} {$oClient->surname}</option>
                                             {/foreach}
                                         {/if}
-                                        *}
                                     </select>
                                 </div>
                             </div>

@@ -93,34 +93,34 @@ starting at 1, as they appear in the .ttc file e.g.
 
 $this->fontdata = array(
 	"dejavusanscondensed" => array(
-		'R' => "DejaVuSansCondensed.ttf",
-		'B' => "DejaVuSansCondensed-Bold.ttf",
-		'I' => "DejaVuSansCondensed-Oblique.ttf",
-		'BI' => "DejaVuSansCondensed-BoldOblique.ttf",
+		'R' => "DejaVuSerifCondensed.ttf",
+		'B' => "DejaVuSerifCondensed-Bold.ttf",
+		'I' => "DejaVuSerifCondensed.ttf",
+		'BI' => "DejaVuSerifCondensed.ttf",
 		),
 	"dejavusans" => array(
-		'R' => "DejaVuSans.ttf",
-		'B' => "DejaVuSans-Bold.ttf",
-		'I' => "DejaVuSans-Oblique.ttf",
-		'BI' => "DejaVuSans-BoldOblique.ttf",
+		'R' => "DejaVuSerifCondensed.ttf",
+		'B' => "DejaVuSerifCondensed-Bold.ttf",
+		'I' => "DejaVuSerifCondensed.ttf",
+		'BI' => "DejaVuSerifCondensed.ttf",
 		),
 	"dejavuserif" => array(
-		'R' => "DejaVuSerif.ttf",
-		'B' => "DejaVuSerif-Bold.ttf",
-		'I' => "DejaVuSerif-Italic.ttf",
-		'BI' => "DejaVuSerif-BoldItalic.ttf",
+		'R' => "DejaVuSerifCondensed.ttf",
+		'B' => "DejaVuSerifCondensed-Bold.ttf",
+		'I' => "DejaVuSerifCondensed.ttf",
+		'BI' => "DejaVuSerifCondensed.ttf",
 		),
 	"dejavuserifcondensed" => array(
 		'R' => "DejaVuSerifCondensed.ttf",
 		'B' => "DejaVuSerifCondensed-Bold.ttf",
-		'I' => "DejaVuSerifCondensed-Italic.ttf",
-		'BI' => "DejaVuSerifCondensed-BoldItalic.ttf",
+		'I' => "DejaVuSerifCondensed.ttf",
+		'BI' => "DejaVuSerifCondensed.ttf",
 		),
 	"dejavusansmono" => array(
-		'R' => "DejaVuSansMono.ttf",
-		'B' => "DejaVuSansMono-Bold.ttf",
-		'I' => "DejaVuSansMono-Oblique.ttf",
-		'BI' => "DejaVuSansMono-BoldOblique.ttf",
+		'R' => "DejaVuSerifCondensed.ttf",
+		'B' => "DejaVuSerifCondensed-Bold.ttf",
+		'I' => "DejaVuSerifCondensed.ttf",
+		'BI' => "DejaVuSerifCondensed.ttf",
 		),
 
 
@@ -271,10 +271,6 @@ $this->fontdata = array(
 // but you do not require them. This allows a more efficient form of subsetting to be used.
 $this->BMPonly = array(
 	"dejavusanscondensed",
-	"dejavusans",
-	"dejavuserifcondensed",
-	"dejavuserif",
-	"dejavusansmono",
 	);
 
 // These next 3 arrays do two things:

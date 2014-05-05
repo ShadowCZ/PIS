@@ -3,6 +3,10 @@
         {include file="./block/dsp_menu.php"}
     </div>
     <div class="col-md-9 column">
+        <ol class="breadcrumb">
+            <li> <a href="{site_url('/cadvice/showAccountList')}">Účty</a></li>
+            <li class="active">Vytvoření</li>
+        </ol>
         {include file="./block/dsp_message.php"}
         <div class="panel panel-success">
             <div class="panel-heading">

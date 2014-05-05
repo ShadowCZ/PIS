@@ -1,26 +1,26 @@
 <?php
-$name='DejaVuSerifCondensed-BoldItalic';
+$name='DejaVuSerifCondensed';
 $type='TTF';
 $desc=array (
-  'Ascent' => 939,
+  'Ascent' => 928,
   'Descent' => -236,
-  'CapHeight' => 939,
-  'Flags' => 262212,
-  'FontBBox' => '[-815 -389 1579 1235]',
-  'ItalicAngle' => -11,
-  'StemV' => 165,
+  'CapHeight' => 928,
+  'Flags' => 4,
+  'FontBBox' => '[-693 -347 1512 1242]',
+  'ItalicAngle' => 0,
+  'StemV' => 87,
   'MissingWidth' => 540,
 );
 $up=-63;
 $ut=44;
-$ttffile='X:/xampp/htdocs/PIS/system/application/third_party/mpdf/ttfonts/DejaVuSerifCondensed-BoldItalic.ttf';
+$ttffile='X:/xampp/htdocs/PIS/system/application/third_party/mpdf/ttfonts/DejaVuSerifCondensed.ttf';
 $TTCfontID='0';
-$originalsize=294584;
+$originalsize=296976;
 $sip=false;
-$smp=false;
-$BMPselected=true;
+$smp=true;
+$BMPselected=false;
 $fontkey='dejavuserifcondensedBI';
-$panose=' 0 0 2 6 8 6 5 3 5 b 2 4';
+$panose=' 0 0 2 6 6 6 5 6 5 2 2 4';
 $haskerninfo=false;
 $unAGlyphs=false;
 ?>
