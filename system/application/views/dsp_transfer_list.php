@@ -155,7 +155,7 @@
                 <space></space>
                 <div class="text-right">
                     <a href="{site_url('ctransaction/generateTransactionsToPDF')}/{if $iClient}{$iClient}{else}0{/if}/{if $iAccount}{$iAccount}{else}0{/if}/{if $fromDate}{$fromDate}{/if}/{if $toDate}{$toDate}{/if}">
-                        <button type="button" class="btn btn-info btn-md">
+                        <button type="button" class="btn btn-info btn-md"  {if !$iClient}disabled{/if}>
                             Generovat PDF
                         </button>
                     </a>
