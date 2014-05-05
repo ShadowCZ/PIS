@@ -38,7 +38,7 @@
                                 <label for="input1" class="col-sm-2 control-label">Částka</label>
                                 <div class="col-sm-10">
                                     <input required title="Toto pole je potřeba vyplnit." type="text" class="form-control" id="input1" name="value" placeholder="Částka">
-                                    <button type="submit" class="btn btn-success col-md-offset-10">Uložit</button>
+                                    <button type="submit" class="btn btn-success col-md-offset-10">{if $iAction == 1}Uložit{else}Vybrat{/if}</button>
                                 </div>
                             </div>
                         </div>

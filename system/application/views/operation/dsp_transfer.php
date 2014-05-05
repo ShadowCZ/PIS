@@ -84,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success col-md-offset-10">Uložit</button>
+                    <button type="submit" class="btn btn-success col-md-offset-10">Odeslat</button>
                 </form>
             </div>
         <div class="panel panel-success">
