@@ -21,6 +21,14 @@ class CTransaction extends MY_Controller{
         }
   
         $this->load->model(array('maccount', 'moperation', 'mclient'));
+        
+        $aMenu = array();
+        $aMenu[] = array( 'href' => site_url( 'ctransaction/showOperationList' ), 'label' => 'Vklady / Výběry' );
+        $aMenu[] = array( 'href' => site_url( 'ctransaction/showTransferList' ), 'label' => 'Převody' );
+        if ($this->session->userdata('role') == 1) {
+            $aMenu[] = array( 'href' => site_url( 'cadmin/' ), 'label' => 'Zpět' );
+        }
+        $this->s->assign('aMenu', $aMenu);
     }
 
     public function index() {
@@ -60,7 +68,8 @@ class CTransaction extends MY_Controller{
         $this->s->assign('iClient', $iClient);
         $this->s->assign('iAccount', $iAccount);
         $this->s->assign('fromDate', $fromDate);
-        $this->s->assign('toDate', $toDate);            
+        $this->s->assign('toDate', $toDate);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
     
@@ -101,7 +110,8 @@ class CTransaction extends MY_Controller{
         $this->s->assign('iClient', $iClient);
         $this->s->assign('iAccount', $iAccount);
         $this->s->assign('fromDate', $fromDate);
-        $this->s->assign('toDate', $toDate);        
+        $this->s->assign('toDate', $toDate);
+        $this->s->assign('iActiveMenu', 0);
         $this->s->displayWithHeader('dsp_operation_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
      
@@ -128,6 +138,7 @@ class CTransaction extends MY_Controller{
         $this->s->assign('iAccount', $iAccount);
         $this->s->assign('fromDate', $fromDate);
         $this->s->assign('toDate', $toDate);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_transfer_detail.php', $this->aJavascriptFiles, $this->aCssFiles );        
     }      
     
@@ -153,6 +164,7 @@ class CTransaction extends MY_Controller{
         $this->s->assign('iAccount', $iAccount);
         $this->s->assign('fromDate', $fromDate);
         $this->s->assign('toDate', $toDate);
+        $this->s->assign('iActiveMenu', 0);
         $this->s->displayWithHeader('dsp_account_owner_list.php', $this->aJavascriptFiles, $this->aCssFiles );       
     } 
   
@@ -204,6 +216,7 @@ class CTransaction extends MY_Controller{
     public function showOutstandingTransferList()  {      
         $aTransfers = $this->moperation->getOutstandingTransfers();
         $this->s->assign('aTransfers', $aTransfers);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }  
       

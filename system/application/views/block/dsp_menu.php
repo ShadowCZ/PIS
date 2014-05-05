@@ -1,4 +1,11 @@
  <ul class="nav nav-stacked nav-pills">
+    {foreach $aMenu as $index => $aMenuSet}
+        <li {if $index == $iActiveMenu}class="active"{/if}>
+            {anchor uri=$aMenuSet['href'] label=$aMenuSet['label']}
+        </li>
+    {/foreach}
+    
+    {*
     <li class="active">
         <a href="{site_url('cadmin/showEmployeeList')}">Zaměstnanci</a>
     </li>
@@ -20,7 +27,6 @@
     <li>
         {anchor uri="/ctransaction/showOperationList" label="Přehled vkladů / výběrů"}
     </li>
-    {*
     <li>
         <a href="#">X Účty</a>
     </li>

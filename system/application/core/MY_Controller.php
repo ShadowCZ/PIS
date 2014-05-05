@@ -162,25 +162,27 @@ class MY_Controller extends CI_Controller {
         exit;
     }
     
-    public function getMenu( $sMenu ) {
-        switch ( $sMenu ) {
-            case 'main' :
-                /**
-                 * TODO: add rights
-                 */
-                //if ( $this->muser->checkRight( 'ET_C_CTICKET_SHOWMY' ) )
-                /*
-                $aMenu[] = array( 'href' => site_url( 'cparcel/register' ), 'label' => _('Register a parcel at reception') );
-                $aMenu[] = array( 'href' => site_url( 'corder/search' ), 'label' => _('To key a return') );
-                $aMenu[] = array( 'href' => site_url( 'cprocess/search' ), 'label' => _('Process pending products') );
-                $aMenu[] = array( 'href' => site_url( 'cadmin/index' ), 'label' => _('Customer / Warehouse configuration') );
-                */
-             break;
-            case 'admin' : // admin submenu
-                /**
-                 * Dont need meanwhile
-                 */
-             break;
+    public function getMenu( $iRole ) {
+        $aMenu = array();
+        switch ( $iRole ) {
+            case 1 : // admin
+                $aMenu[] = array( 'href' => site_url( 'cadmin/showEmployeeList' ), 'label' => 'Zamìstnanci' );
+                $aMenu[] = array( 'href' => site_url( 'cadvice/showClientList' ), 'label' => 'Finanèní poradce' );
+                $aMenu[] = array( 'href' => site_url( 'coperation/showClientList' ), 'label' => 'Zadání operace' );
+                $aMenu[] = array( 'href' => site_url( 'ctransaction/showOperationList' ), 'label' => 'Transakce' );
+                break;
+            case 2 : // advice
+                $aMenu[] = array( 'href' => site_url( 'cadvice/showClientList' ), 'label' => 'Klienti' );
+                $aMenu[] = array( 'href' => site_url( 'cadvice/showAccountList' ), 'label' => 'Úèty' );
+                break;
+            case 3 : // operation
+                $aMenu[] = array( 'href' => site_url( 'coperation/showClientList' ), 'label' => 'Klienti' );
+                $aMenu[] = array( 'href' => site_url( 'coperation/showAccountList' ), 'label' => 'Úèty' );
+                break;
+            case 4 : // transaction
+                $aMenu[] = array( 'href' => site_url( 'ctransaction/showOperationList' ), 'label' => 'Vklady / Vıbìry' );
+                $aMenu[] = array( 'href' => site_url( 'ctransaction/showTransferList' ), 'label' => 'Pøevody' );
+                break;
         }
         
         if ( isset( $aMenu ) )

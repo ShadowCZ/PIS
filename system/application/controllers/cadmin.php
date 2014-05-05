@@ -20,6 +20,14 @@ class CAdmin extends MY_Controller{
             $this->redirect('cmain/', 'Nemáte oprávnění', 2);
         }
         $this->load->model(array('memployee', 'mrole'));
+        
+        $aMenu = array();
+        $aMenu[] = array( 'href' => site_url( 'cadmin/showEmployeeList' ), 'label' => 'Zaměstnanci' );
+        $aMenu[] = array( 'href' => site_url( 'cadvice/showClientList' ), 'label' => 'Finanční poradce' );
+        $aMenu[] = array( 'href' => site_url( 'coperation/showClientList' ), 'label' => 'Zadání operace' );
+        $aMenu[] = array( 'href' => site_url( 'ctransaction/showOperationList' ), 'label' => 'Transakce' );
+        $this->s->assign('aMenu', $aMenu);
+        $this->s->assign('iActiveMenu', 0);
     }
 
     public function index() {

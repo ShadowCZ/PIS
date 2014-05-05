@@ -21,6 +21,13 @@ class CAdvice extends MY_Controller{
         }
         
         $this->load->model(array('maccount', 'maccounttype', 'mclient', 'mdelegatedperson', 'moperation'));
+        $aMenu = array();
+        $aMenu[] = array( 'href' => site_url( 'cadvice/showClientList' ), 'label' => 'Klienti' );
+        $aMenu[] = array( 'href' => site_url( 'cadvice/showAccountList' ), 'label' => 'Účty' );
+        if ($this->session->userdata('role') == 1) {
+            $aMenu[] = array( 'href' => site_url( 'cadmin/' ), 'label' => 'Zpět' );
+        }
+        $this->s->assign('aMenu', $aMenu);
     }
 
     public function index() {
@@ -29,6 +36,7 @@ class CAdvice extends MY_Controller{
 
     // zobrazí formulář pro vytvoření nového klienta
     public function showClientCreate() {
+        $this->s->assign('iActiveMenu', 0);
         $this->s->displayWithHeader('dsp_client_create.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
     
@@ -39,6 +47,7 @@ class CAdvice extends MY_Controller{
         
         $this->s->assign('oClient', $oClient);
         $this->s->assign('aTypes', $aTypes);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
      
@@ -48,6 +57,7 @@ class CAdvice extends MY_Controller{
 
         $this->s->assign('iClient', $iClient);
         $this->s->assign('aAccounts', $aAccounts);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_account_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }      
     
@@ -56,6 +66,7 @@ class CAdvice extends MY_Controller{
         $aClients = $this->mclient->getAll();
         
         $this->s->assign('aClients', $aClients);
+        $this->s->assign('iActiveMenu', 0);
         $this->s->displayWithHeader('dsp_client_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     } 
   
@@ -64,6 +75,7 @@ class CAdvice extends MY_Controller{
         $oClient = $this->mclient->getById($iClient);
         
         $this->s->assign('oClient', $oClient);
+        $this->s->assign('iActiveMenu', 0);
         $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
 
@@ -76,6 +88,7 @@ class CAdvice extends MY_Controller{
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('aPersons', $aPersons);
         $this->s->assign('aOperations', $aOperations);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_account_detail.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
 
@@ -86,6 +99,7 @@ class CAdvice extends MY_Controller{
         
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('aPersons', $aPersons);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_account.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     
@@ -102,6 +116,7 @@ class CAdvice extends MY_Controller{
         
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('aPersons', $aPersons);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_delegated_person.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     
@@ -225,6 +240,7 @@ class CAdvice extends MY_Controller{
         $this->s->assign('aPersons', $aPersons);
         $this->s->assign('oAccount', $oAccount);
         $this->s->assign('aType', $aAccountTypes);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_account_edit.php', $this->aJavascriptFiles, $this->aCssFiles );
     }  
             
@@ -246,6 +262,7 @@ class CAdvice extends MY_Controller{
         $aPersons = $this->mclient->getFilteredClients($sClientFilter);
         $this->s->assign('oAccount', $oAccout);
         $this->s->assign('aPersons', $aPersons);
+        $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_client_select.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
     

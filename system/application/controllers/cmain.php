@@ -71,11 +71,14 @@ class CMain extends MY_Controller{
             $this->session->set_userdata($aSession);
             $this->redirect('cmain/', 'Úspěšně přihlášen', 1);
         } else {
+            $this->redirect('cmain/', 'Špatné přihlašovací údaje', 2);
+        /*
             if ($this->memployee->isActive()) {
                 $this->redirect('cmain/', 'Špatné přihlašovací údaje', 2);
             } else {
                 $this->redirect('cmain/', 'Uživatel nebyl aktivován', 2);
             }
+        */
         }
     }
     
