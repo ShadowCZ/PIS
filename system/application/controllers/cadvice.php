@@ -253,6 +253,7 @@ class CAdvice extends MY_Controller{
         }
         
         $this->s->assign('oClient', $oClient);
+        $this->s->assign('iActiveMenu', 0);
         $this->s->displayWithHeader('dsp_client.php', $this->aJavascriptFiles, $this->aCssFiles );
     }    
 
