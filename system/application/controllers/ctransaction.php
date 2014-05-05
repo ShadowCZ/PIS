@@ -33,7 +33,8 @@ class CTransaction extends MY_Controller{
             $toDate = $this->input->post('toDate');
         } 
         
-        $aAccounts = array();
+        $aAccounts = $this->maccount->getAll();
+        $aClients = $this->mclient->getAll();
         if ($iClient > 0) {
             $aAccounts = $this->maccount->getClientAccounts($iClient, "");
         }
@@ -45,12 +46,13 @@ class CTransaction extends MY_Controller{
             $aTransfers = $this->moperation->getTransfersByAccountAndDate(null, $fromDate, $toDate);
         }
         $this->s->assign('aAccounts', $aAccounts);
+        $this->s->assign('aClients', $aClients);
         $this->s->assign('aTransfers', $aTransfers);
         $this->s->assign('iClient', $iClient);
         $this->s->assign('iAccount', $iAccount);
         $this->s->assign('fromDate', $fromDate);
         $this->s->assign('toDate', $toDate);            
-        $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+        //$this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
     
         // seznam vsech operaci (transakce, vklady, vybery)
@@ -68,7 +70,11 @@ class CTransaction extends MY_Controller{
             $toDate = $this->input->post('toDate');
         } 
         
-        $aAccounts = array();
+        $aAccounts = $this->maccount->getAll();
+        $aClients = $this->mclient->getAll();
+        if ($iClient > 0) {
+            $aAccounts = $this->maccount->getClientAccounts($iClient, "");
+        }
         if ($iClient > 0) {
             $aAccounts = $this->maccount->getClientAccounts($iClient, "");
         }
@@ -81,6 +87,7 @@ class CTransaction extends MY_Controller{
         }
 
         $this->s->assign('aAccounts', $aAccounts);
+        $this->s->assign('aClients', $aClients);
         $this->s->assign('aOperations', $aOperations);
         $this->s->assign('iClient', $iClient);
         $this->s->assign('iAccount', $iAccount);
