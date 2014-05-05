@@ -4,14 +4,14 @@
     </div>
     <div class="col-md-9 column">
          <ol class="breadcrumb">
-            <li> <a href="{site_url('/cadmin/showClientList')}">Klienti</a></li>
-            <li class="active">Editace</li>
+            <li> <a href="{site_url('/cadvice/showClientList')}">Klienti</a></li>
+            <li class="active">Vytvoření</li>
         </ol>
         {include file="./block/dsp_message.php"}
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Detail klienta
+                    Vytvoření nového klienta
                 </h3>
             </div>
             <div class="panel-body">
