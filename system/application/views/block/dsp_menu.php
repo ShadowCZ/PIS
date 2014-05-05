@@ -15,10 +15,10 @@
         {anchor uri="/coperation/showClientList" label="Netuším co to je"}
     </li>
     <li>
-        {anchor uri="/ctransaction/showTransferList" label="Potvrzení plateb"}
+        {anchor uri="/ctransaction/showTransferList" label="Potvrzení převodů"}
     </li>
     <li>
-        {anchor uri="/ctransaction/showOperationList" label="Přehled operací"}
+        {anchor uri="/ctransaction/showOperationList" label="Přehled vkladů / výběrů"}
     </li>
     {*
     <li>
