@@ -12,6 +12,7 @@
     </nav>
 </header>
 <content class="col-md-12 container">
+    {include file="./block/dsp_message.php"}
     <div class="col-md-offset-4 col-md-4">
         <form method="post" action="{site_url('cmain/doLogin')}">
             <div class="form-group">

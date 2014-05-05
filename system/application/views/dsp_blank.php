@@ -1,5 +1,5 @@
 <div class="col-md-3 column">
-    {include file="./block/dsp_menu_admin.php"}
+    {include file="./block/dsp_menu.php"}
 </div>
 <div class="col-md-9 column">
     <div class="panel panel-success">

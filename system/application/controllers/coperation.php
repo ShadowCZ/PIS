@@ -84,9 +84,9 @@ class COperation extends MY_Controller{
     // Provede výběr
     public function doWithdraw($iAccount, $iPerson) {
         $iValue = $this->input->post('value');
-        if ($iValue < 1) {
+        if ($iValue < 100) {
             // TODO: error message
-            redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/2', 'location');
+            $this->redirect('coperation/showOperation/' . $iAccount . '/' . $iPerson . '/2', 'Minimální výběr je 100,-', 2);
         }
     
         $this->moperation->delegatedPerson = $iPerson;
