@@ -78,7 +78,7 @@ class CTransaction extends MY_Controller{
      
     
         // detail operace
-    public function showTransactionDetail($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation) {
+    public function showTransactionDetail($iOperation, $iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null) {
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
         }
@@ -213,8 +213,53 @@ class CTransaction extends MY_Controller{
         if (file_exists($pdfFilePath) == FALSE)
         {    
             ini_set('memory_limit','32M');
-            $data['test'] = 'Hello world'; // pass data to the view
-            $html = $this->load->view('pdf_report', $data, true); // render the view into HTML
+            $html = $this->load->view('pdf_operation', $data, true); // render the view into HTML
+            $this->load->library('pdf');
+            $pdf = $this->pdf->load();
+            $pdf->SetFooter('PIS'.'|{PAGENO}|'.date("Y-m-d H:i:s")); // Add a footer for good measure <img src="http://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
+            $pdf->WriteHTML($html); // write the HTML into the PDF
+            $pdf->Output($pdfFilePath, 'D'); // send to download 
+        }
+            
+        $this->showOperationList($iClient, $iAccount, $fromDate, $toDate);   
+    }
+    
+    public function generateTransactionsToPDF($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null)  { 
+        if ($this->input->post('client')) {
+            $iClient = $this->input->post('client');
+        }
+        if ($this->input->post('account')) {
+            $iAccount = $this->input->post('account');
+        } 
+        if ($this->input->post('fromDate')) {
+            $fromDate = $this->input->post('fromDate');
+        } 
+        if ($this->input->post('toDate')) {
+            $toDate = $this->input->post('toDate');
+        }
+        if ($this->input->post('type')) {
+            $iType = $this->input->post('type');
+        }
+        
+        $rand = rand();
+        $filename = md5($rand);
+        $filename .= '.pdf';
+        $pdfFilePath = 'download/'.$filename;
+        
+        // naplneni daty pro view
+        $aOperations = $this->moperation->getTransfersByAccountAndDate($iAccount, $fromDate, $toDate);
+        $oAccount = $this->maccount->getById($iAccount);
+        $data['account_number'] = $oAccount->number;
+        $data['from'] = $fromDate;
+        $data['to'] = $toDate;
+        $data['client'] = $oAccount->client->name . " " . $oAccount->client->surname . " (ID: " . $oAccount->client->ID . ")";
+        $data['account_type'] = $oAccount->type->description;
+        $data['operations'] = $aOperations;
+        
+        if (file_exists($pdfFilePath) == FALSE)
+        {    
+            ini_set('memory_limit','32M');
+            $html = $this->load->view('pdf_transaction', $data, true); // render the view into HTML
             $this->load->library('pdf');
             $pdf = $this->pdf->load();
             $pdf->SetFooter('PIS'.'|{PAGENO}|'.date("Y-m-d H:i:s")); // Add a footer for good measure <img src="http://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">

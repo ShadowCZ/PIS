@@ -131,11 +131,12 @@ class MOperation extends MY_Model
                WHERE id_account=" . $iAccount . " AND id_operation_type=3";
     
         if (isset($from) && ! empty($from)) {
-            $sql .= "  AND date>=". $from;
+            $sql .= "  AND o.date >= '". $from ."'";
         }
         if (isset($to) && ! empty($to)) {
-            $sql .= "  AND date<=". $to;
-        }        
+            $sql .= "  AND o.date<='". $to ."'";
+        }
+        $sql .= " ORDER BY o.id_operation ASC";       
    
         $resources = $this->db->query( $sql );
 
