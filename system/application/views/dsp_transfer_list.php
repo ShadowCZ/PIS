@@ -112,7 +112,7 @@
                     </thead>
                     <tbody>
                         {foreach $aTransfers as $oTransfer}
-                            <tr class='clickableRow' href="{site_url('ctransaction/showTransactionDetail')}/{if $iClient}{$iClient}{else}0{/if}/{if $iAccount}{$iAccount}{else}0{/if}/{if $fromDate}{$fromDate}{else}0{/if}/{if $toDate}{$toDate}{else}0{/if}/{$oTransfer->ID}">
+                            <tr class='clickableRow' href="{site_url('ctransaction/showTransactionDetail')}/{$oTransfer->ID}/{if $iClient}{$iClient}{else}0{/if}/{if $iAccount}{$iAccount}{else}0{/if}/{if $fromDate}{$fromDate}{else}0{/if}/{if $toDate}{$toDate}{else}0{/if}">
                                 <td>
                                     {$oTransfer->ID}
                                 </td>
@@ -153,6 +153,14 @@
                         {/foreach}
                     </tbody>
                 </table>
+                <space></space>
+                <div class="text-right">
+                    <a href="{site_url('ctransaction/generateTransactionsToPDF')}/{if $iClient}{$iClient}{else}0{/if}/{if $iAccount}{$iAccount}{else}0{/if}/{if $fromDate}{$fromDate}{/if}/{if $toDate}{$toDate}{/if}">
+                        <button type="button" class="btn btn-info btn-md">
+                            Generovat PDF
+                        </button>
+                    </a>
+                </div>
             </div>
                 {* Přidáme až při rozšiřování
                 <div class="row clearfix">

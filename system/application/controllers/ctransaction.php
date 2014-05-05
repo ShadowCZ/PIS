@@ -52,7 +52,7 @@ class CTransaction extends MY_Controller{
         $this->s->assign('iAccount', $iAccount);
         $this->s->assign('fromDate', $fromDate);
         $this->s->assign('toDate', $toDate);            
-        //$this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
+        $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }   
     
         // seznam vsech operaci (transakce, vklady, vybery)
