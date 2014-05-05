@@ -3,7 +3,7 @@
         {include file="./block/dsp_menu.php"}
     </div>
     <div class="col-md-9 column">
-    {include file="./block/dsp_message.php"}
+        {include file="./block/dsp_message.php"}
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
