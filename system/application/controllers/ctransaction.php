@@ -16,7 +16,7 @@ class CTransaction extends MY_Controller{
             $this->redirect('cmain/', 'Nejste přihlášen', 2);
         }
 
-        if( $this->session->userdata('role') != 4) {
+        if( $this->session->userdata('role') != 4 && $this->session->userdata('role') != 1 ) {
             $this->redirect('cmain/', 'Nemáte oprávnění', 2);
         }
   

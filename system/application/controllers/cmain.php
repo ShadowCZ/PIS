@@ -16,14 +16,29 @@ class CMain extends MY_Controller{
 	// tato metoda se provede pokud je request cmain/
     public function index() {
         if( $this->session->userdata('login') == 1) {
-            $this->showBlank();
+            switch ($this->session->userdata('role')) {
+                case 1:
+                    redirect('cadmin/', 'location');
+                    break;
+                case 2:
+                    redirect('cadvice/', 'location');
+                    break;
+                case 3:
+                    redirect('coperation/', 'location');
+                    break;
+                case 4:
+                    redirect('ctransaction/', 'location');
+                    break;
+                default:    
+                    $this->showBlank();
+                    break;
+            }
         } else {
             $this->showLogin();
         }
     }
 
 	// prázdný formulář po přihlášení
-	// TODO: dle role zobrazit příslušné menu
     public function showBlank() {
         $this->s->displayWithHeader('dsp_blank.php', $this->aJavascriptFiles, $this->aCssFiles );
     }
