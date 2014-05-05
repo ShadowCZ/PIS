@@ -213,9 +213,17 @@ class CTransaction extends MY_Controller{
     }
     
     	// seznam vsech nevyrizenych transakci (bez vkladu a vyberu)
-    public function showOutstandingTransferList()  {      
+    public function showOutstandingTransferList()  {
+        $aAccounts = $this->maccount->getAll();
+        $aClients = $this->mclient->getAll();
         $aTransfers = $this->moperation->getOutstandingTransfers();
+        $this->s->assign('iClient', 0);
+        $this->s->assign('iAccount', 0);
+        $this->s->assign('fromDate', null);
+        $this->s->assign('toDate', null);
         $this->s->assign('aTransfers', $aTransfers);
+        $this->s->assign('aAccounts', $aAccounts);
+        $this->s->assign('aClients', $aClients);
         $this->s->assign('iActiveMenu', 1);
         $this->s->displayWithHeader('dsp_transfer_list.php', $this->aJavascriptFiles, $this->aCssFiles );
     }  
