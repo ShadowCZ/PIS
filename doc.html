@@ -17,22 +17,22 @@
      podle použitého editoru -->
 
 <!-- Nahraďte prosím názvem tématu -->
-<h1>Téma projektu</h1>
+<h1>Banka</h1>
 
 <!-- Jména autorů a jejich činnost -->
 <dl>
     <dt>Autoři</dt>
     <dd>Radim Reš
         <a href="mailto:xresra00@stud.fit.vutbr.cz">xresra00@stud.fit.vutbr.cz</a> -
-        databázový systém a aplikační logika
+        ORM, modely, controllery, view, návrh a organizace
     </dd>
     <dd>Tomáš Smetka
         <a href="mailto:xsmetk01@stud.fit.vutbr.cz">xsmetk01@stud.fit.vutbr.cz</a> - 
-        databázový systém a aplikační logika
+        modely, controllery, export PDF
     </dd>
     <dd>Ondřej Šimíček
         <a href="mailto:xsimic02@stud.fit.vutbr.cz">simic02@stud.fit.vutbr.cz</a> - 
-        uživatelské rozhraní.
+        view (většina)
     </dd>
 </dl>
 
@@ -49,6 +49,16 @@
 
 <!-- vyžadované knihovny i s verzemi, pouze pro Java EE -->
 <h2>Vyžadované knihovny</h2>
-!! doplnit ty PHP srandy ..
+<p>
+Aplikace byla vypracována v PHP za pomocí rámců Codeigniter 2, Smarty a jQuery.<br>
+K aplikaci není potřeba žádných externích knihoven.<br>
+Důležité je však nastavení přistupových údajů k DB v souboru .\system\application\config\database.php<br><br>
+<code>
+$db['default']['hostname'] = 'localhost';<br>
+$db['default']['username'] = 'root';<br>
+$db['default']['password'] = '';<br>
+$db['default']['database'] = 'banka';<br>
+</code>
+</p>
 </body>
 </html>
