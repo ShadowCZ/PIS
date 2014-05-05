@@ -269,11 +269,7 @@ class CAdvice extends MY_Controller{
     
         // prida delegovanou osobu k uctu
     public function addDelegatedPerson($iAccount, $iClient = 0) {
-    /*
-        if ($iClient == 0) {
-             $this->redirect('cadvice/showClientSelect/'.$iAccount, 'location');
-        }
-    */
+    
         $iClient = $this->input->post('newPerson');
         if ($iClient === false) {
             $this->redirect('cadvice/showAccount/'.$iAccount, 'Klient nevybrán', 3);

@@ -54,7 +54,10 @@ class COperation extends MY_Controller{
     }  
     
     // Zobrazí přehled delegovaných osob
-    public function showDelegatedPersonList($iAccount) {
+    public function showDelegatedPersonList($iAccount=0) {
+        if ($iAccount == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyl zvolen bankovní účet', 3);
+        }
         $aPersons = $this->mdelegatedperson->getByAccount($iAccount);
         
         $this->s->assign('aPersons', $aPersons);
@@ -63,7 +66,13 @@ class COperation extends MY_Controller{
     }
 
     // Zobrazí detail účtu s limetem pověřené osoby a se zbylou částkou, kterou může vybrat
-    public function showAccountDetail($iAccount, $iPerson) {
+    public function showAccountDetail($iAccount=0, $iPerson=0) {
+        if ($iAccount == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyl zvolen bankovní účet', 3);
+        }
+        if ($iPerson == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyl zvolen uživatel', 3);
+        }
         $oAccount = $this->maccount->getById($iAccount);
         $oPerson = $this->mdelegatedperson->getById($iPerson);
         $aOperations = $this->moperation->getLastOperations($iPerson, 30);
@@ -78,7 +87,16 @@ class COperation extends MY_Controller{
     }
     
     // Zobrazí formulář pro vložení / vybrání částky
-    public function showOperation($iAccount, $iPerson, $iAction) {
+    public function showOperation($iAccount=0, $iPerson=0, $iAction=0) {
+        if ($iAccount == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyl zvolen bankovní účet', 3);
+        }
+        if ($iPerson == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyl zvolen uživatel', 3);
+        }
+        if ($iAction == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyla zvolena akce', 3);
+        }
         $oAccount = $this->maccount->getById($iAccount);
         $oPerson = $this->mdelegatedperson->getById($iPerson);
         $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);
@@ -92,7 +110,13 @@ class COperation extends MY_Controller{
     }
     
     // Zobrazí formulář pro převod částky z účtu na účet
-    public function showTransfer($iAccount, $iPerson) {
+    public function showTransfer($iAccount=0, $iPerson=0) {
+        if ($iAccount == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyl zvolen bankovní účet', 3);
+        }
+        if ($iPerson == 0) {
+            $this->redirect('coperation/showAccountList', 'Nebyl zvolen uživatel', 3);
+        }
         $oAccount = $this->maccount->getById($iAccount);
         $oPerson = $this->mdelegatedperson->getById($iPerson);
         $iAvailableCash = $this->moperation->getAvailableCashInLimit($iPerson, 7);

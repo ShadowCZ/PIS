@@ -56,13 +56,13 @@
                             <div class="form-group">
                                 <label for="input4" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="">
+                                    <input required type="email" class="form-control" id="input4" name="email" placeholder="Email"  value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input6" class="col-sm-2 control-label">Ulice</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="">
+                                    <input required type="text" class="form-control" id="input6" name="address2" placeholder="Ulice" value="">
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                             <div class="form-group">
                                 <label required title="Toto pole je potřeba vyplnit." for="input11" class="col-sm-2 control-label">Heslo</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="input11" name="password" placeholder="Heslo" value="">
+                                    <input required type="password" class="form-control" id="input11" name="password" placeholder="Heslo" value="">
                                 </div>
                             </div>
                             <div class="form-group">

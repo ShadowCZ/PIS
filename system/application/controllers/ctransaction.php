@@ -117,7 +117,10 @@ class CTransaction extends MY_Controller{
      
     
         // detail operace
-    public function showTransactionDetail($iOperation, $iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null) {
+    public function showTransactionDetail($iOperation=0, $iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null) {
+        if ($iOperation == 0) {
+            $this->redirect('ctransaction/showTransferList/', 'Nebyla zvolena operace', 3);
+        }
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
         }
@@ -169,7 +172,10 @@ class CTransaction extends MY_Controller{
     } 
   
         // schvaleni prevodu mezi ucty
-    public function doAcceptTransfer($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation) {
+    public function doAcceptTransfer($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation = 0) {
+        if ($iOperation == 0) {
+            $this->redirect('ctransaction/showTransferList/', 'Nebyla zvolena operace', 3);
+        }
         $oOperation = $this->moperation->getById($iOperation);
         $oOperation->state = 1;
         $oOperation->employee = $_SESSION['user_id'];
@@ -178,7 +184,10 @@ class CTransaction extends MY_Controller{
     }   
 
         // zamitnuti prevodu mezi ucty
-    public function doRejectTransfer($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation) {
+    public function doRejectTransfer($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iOperation=0) {
+        if ($iOperation == 0) {
+            $this->redirect('ctransaction/showTransferList/', 'Nebyla zvolena operace', 3);
+        }
         $oOperation = $this->moperation->getById($iOperation);
         $oOperation->state = 2;
         $oOperation->employee = $_SESSION['user_id'];
@@ -188,6 +197,9 @@ class CTransaction extends MY_Controller{
     
         // vypis z uctu, podle promenne iType se rozhoduje o filtrovani transakci (1) nebo vsech operaci (0)
     public function doExport($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null, $iType = 0) {
+        if ($iAccount == 0) {
+            $this->redirect('ctransaction/showTransferList/', 'Nebyla zvolen bankovní účet', 3);
+        }
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
         }
@@ -229,6 +241,9 @@ class CTransaction extends MY_Controller{
     }  
       
     public function generateOperationsToPDF($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null)  { 
+        if ($iAccount == 0) {
+            $this->redirect('ctransaction/showOperationList/', 'Nebyla zvolen bankovní účet', 3);
+        }
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
         }
@@ -275,6 +290,9 @@ class CTransaction extends MY_Controller{
     }
     
     public function generateTransactionsToPDF($iClient = 0, $iAccount = 0, $fromDate = null, $toDate = null)  { 
+        if ($iAccount == 0) {
+            $this->redirect('ctransaction/showTransferList/', 'Nebyla zvolen bankovní účet', 3);
+        }
         if ($this->input->post('client')) {
             $iClient = $this->input->post('client');
         }
