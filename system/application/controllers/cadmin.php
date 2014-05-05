@@ -44,7 +44,7 @@ class CAdmin extends MY_Controller{
 	// zobrazí formulář pro editaci zaměstnanců
     public function showEmployee($iEmployee = 0) {
         if ($iEmployee == 0) {
-            $this->redirect('cadmin/showEmployeeList', 'Nebyla zvolen zaměstnanec', 3);
+            $this->redirect('cadmin/showEmployeeList', 'Nebyl vybrán zaměstnanec', 3);
         }
         if ($iEmployee > 0) {
             $oEmployee = $this->memployee->getById($iEmployee);
@@ -73,7 +73,7 @@ class CAdmin extends MY_Controller{
             $this->memployee = $this->memployee->getById($iEmployee);
             $sMSGAction = "upraven";
         }
-        //var_dump($oEmployee);
+        
         if ($this->input->post('login')) {
             $this->memployee->login = $this->input->post('login');
         }
@@ -108,7 +108,6 @@ class CAdmin extends MY_Controller{
             $this->memployee->active = $this->input->post('active');
         }
 
-        //$this->memployee->update();
         $this->memployee->update();
         $this->redirect('cadmin/showEmployeeList/', 'Zaměstnanec úspěšně ' . $sMSGAction, 1);
     }
@@ -117,7 +116,7 @@ class CAdmin extends MY_Controller{
 	// zobrazí formulář pro přihlášení
     public function removeEmployee($iEmployee = 0) {
         if ($iEmployee == 0) {
-            $this->redirect('cadmin/showEmployeeList', 'Nebyla zvolen zaměstnanec', 3);
+            $this->redirect('cadmin/showEmployeeList', 'Nebyla vybrán zaměstnanec', 3);
         }
         $this->memployee->delete($iEmployee);
         $this->redirect('cadmin/showEmployeeList/', 'Zaměstnanec úspěšně odebrán', 1);
