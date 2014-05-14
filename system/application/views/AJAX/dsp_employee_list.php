@@ -4,10 +4,10 @@
             {$oEmployee->ID}
         </td>
         <td>
-            {$oEmployee->name}
+            {$oEmployee->name|replace:"`$sFilter`":"<b style=color:blue>`$sFilter`</b>"}
         </td>
         <td>
-            {$oEmployee->surname}
+            {$oEmployee->surname|replace:"`$sFilter`":"<b style=color:blue>`$sFilter`</b>"}
         </td>
         <td>
             {if $oEmployee->role}{$oEmployee->role->name}{/if}

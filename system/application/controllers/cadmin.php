@@ -126,6 +126,7 @@ class CAdmin extends MY_Controller{
     public function AJAXGetEmployeeList() {
         $sFilter = $this->input->post('sFilter');
         $aEmployees = $this->memployee->getByFilter($sFilter);
+        $this->s->assign('sFilter', $sFilter);
         $this->s->assign('aEmployees', $aEmployees);
         $this->s->display('AJAX/dsp_employee_list.php');
     }
