@@ -123,7 +123,8 @@ class CAdmin extends MY_Controller{
     }
     
 	// zobrazí přehled zaměstnanců
-    public function AJAXGetEmployeeList($sFilter = "") {
+    public function AJAXGetEmployeeList() {
+        $sFilter = $this->input->post('sFilter');
         $aEmployees = $this->memployee->getByFilter($sFilter);
         $this->s->assign('aEmployees', $aEmployees);
         $this->s->display('AJAX/dsp_employee_list.php');

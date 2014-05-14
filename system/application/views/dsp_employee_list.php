@@ -13,8 +13,14 @@ onload=function(){
 
 function search() {
     var search = $('#searchText').val();
-    $.get("{site_url('cadmin/AJAXGetEmployeeList')}/" + search, function(data) {
+    $.post("{site_url('cadmin/AJAXGetEmployeeList')}/", { sFilter: search}, function(data) {
         $('#employee_content').html(data);
+        $(".clickableRow").click(function(event) {
+        window.e = event;
+            if (event.target.className.indexOf("dont-select") == -1 && !$(event.target).parents(".dont-select").length) {
+                window.document.location = $(this).attr("href");
+            }
+        });
     });
 }
 </script>
