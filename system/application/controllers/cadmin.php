@@ -121,4 +121,11 @@ class CAdmin extends MY_Controller{
         $this->memployee->delete($iEmployee);
         $this->redirect('cadmin/showEmployeeList/', 'Zaměstnanec úspěšně odebrán', 1);
     }
+    
+	// zobrazí přehled zaměstnanců
+    public function AJAXGetEmployeeList($sFilter = "") {
+        $aEmployees = $this->memployee->getByFilter($sFilter);
+        $this->s->assign('aEmployees', $aEmployees);
+        $this->s->display('AJAX/dsp_employee_list.php');
+    }
 }

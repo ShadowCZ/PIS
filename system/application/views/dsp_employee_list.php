@@ -1,3 +1,24 @@
+<script type="text/javascript">
+var cityEditId = 0;
+
+onload=function(){
+    $('#search').submit(function() {
+        search();
+        return false;
+    });
+    $('#searchText').keyup(function() {
+        search();
+    });
+}
+
+function search() {
+    var search = $('#searchText').val();
+    $.get("{site_url('cadmin/AJAXGetEmployeeList')}/" + search, function(data) {
+        $('#employee_content').html(data);
+    });
+}
+</script>
+
 <div class="row clearfix">
     <div class="col-md-3 column">
         {include file="./block/dsp_menu.php"}
@@ -15,12 +36,12 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <form class="form-inline col-md-6" role="form">
+                    <form id="search" class="form-inline col-md-6" role="form">
                           <div class="form-group">
                             <label class="sr-only" for="searchText">Email address</label>
-                            <input type="text" class="form-control" id="searchText" name="searchText" placeholder="Text">
+                            <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Text">
                           </div>
-                          <button type="submit" class="btn btn-default">Hledat</button>
+                          <button id="searchBtn" type="submit" class="btn btn-default">Hledat</button>
 
                     </form>
                     <div class=" col-md-6">
@@ -60,7 +81,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="employee_content">
                         {foreach $aEmployees as $oEmployee}
                             <!-- BUG: vim, ze ta adresa je blbe, nevim jak ji udelat dobre -->
                             <tr  class='clickableRow' href="{site_url('cadmin/showEmployee')}/{$oEmployee->ID}">

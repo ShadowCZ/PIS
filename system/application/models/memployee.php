@@ -116,4 +116,26 @@ class MEmployee extends MY_Model
     public function isActive () {
         return $this->active == 1 ? true : false;
     }
+    
+    public function getByFilter($sFilter) {
+        $map = $this->getMap();
+
+        $sCond = " WHERE name LIKE '%" . $sFilter . "%' OR surname LIKE '%" . $sFilter . "%'";
+        
+        $sql = "SELECT * FROM employee";
+        
+        $sql .= $sCond;
+      
+        $resources = $this->db->query( $sql );
+
+        $aEmployees = array();
+        foreach ($resources->result() as $row) {
+            $oEmployee = new MEmployee();
+            foreach ($row as $key => $att) {
+                $oEmployee->$map[$key] = $att;
+            }
+            $aEmployees[] = $oEmployee;
+        }
+        return $aEmployees;
+    }
 }
